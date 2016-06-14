@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Image;
+package image;
 
+import image.Image;
 import java.io.InputStream;
 import org.junit.Test;
 
