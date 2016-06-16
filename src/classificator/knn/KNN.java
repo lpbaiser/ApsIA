@@ -71,7 +71,7 @@ public class KNN {
                 for (int i = 0; i < strCaracteristicas.length - 1; i++) {
                     caracteristicas[i] = new Caracteristica(Double.parseDouble(strCaracteristicas[i]));
                 }
-                instancias.add(new Instancia(caracteristicas, Classe.parseClasse(strCaracteristicas[strCaracteristicas.length - 1])));
+                instancias.add(new Instancia(caracteristicas, Classe.BART));
             }
             conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]));
         } catch (IOException ex) {
@@ -112,24 +112,14 @@ public class KNN {
                 throw new Exception("Vetor de distâncias não preenchido");
             }
             for (int i = 0; i < k; i++) {
-                votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
+                votos[distancias.get(0).getTo().getClasse().toInt()]++;
                 distancias.remove(0);
             }
-            return Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
+            return Classe.BART;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
-    }
-
-    private int getIndexDoMaiorValor(int[] a) {
-        int index = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] > a[i - 1]) {
-                index = i;
-            }
-        }
-        return index;
     }
 
     public Confusao getMatrizConfusao() {

@@ -19,12 +19,16 @@ import javax.imageio.ImageIO;
  */
 public class Image {
 
-    public void readImage(InputStream inputStream) {
+    Color[][] image;
+
+    public Image(InputStream inputStream) {
         try {
             BufferedImage bufferedImage = ImageIO.read(inputStream);
+            image = new Color[bufferedImage.getWidth()][bufferedImage.getHeight()];
             for (int x = 0; x < bufferedImage.getWidth(); x++) {
                 for (int y = 0; y < bufferedImage.getHeight(); y++) {
                     Color c = new Color(bufferedImage.getRGB(x, y));
+                    this.image[x][y] = c;
                     System.out.print(c.getRed());
                     System.out.print("\t");
                     System.out.print(c.getGreen());

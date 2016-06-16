@@ -17,8 +17,7 @@ public class ImageTest {
 
     @Test
     public void testReadImage() {
-        Image image = new Image();
         InputStream inputStream = getClass().getResourceAsStream("/Train/bart001.bmp");
-        image.readImage(inputStream);
+        Image image = new Image(inputStream);
     }
 }

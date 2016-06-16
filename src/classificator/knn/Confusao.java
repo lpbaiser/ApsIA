@@ -26,7 +26,7 @@ public class Confusao {
     }
 
     public void registrarConfusao(Classe expected, Classe actual) {
-        this.matriz[Classe.toInt(expected) - 1][Classe.toInt(actual) - 1]++;
+        this.matriz[expected.toInt()][actual.toInt()]++;
     }
 
     public double getAccuracy() {
