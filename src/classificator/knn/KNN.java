@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package knn;
+package classificator.knn;
 
 import data.Instancia;
 import data.Conjunto;
 import data.Classe;
 import data.Caracteristica;
+import data.Tipo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +37,23 @@ public class KNN {
         this.normalizar = normalizar;
         if (this.normalizar) {
             this.treino.normalizarMinMax();
+        }
+    }
+
+    public KNN(int k, Conjunto treino, int porcentagem, boolean normalizar) throws Exception {
+        this.k = k;
+        this.treino = (Conjunto) treino.clone();
+        this.treino.separarInstancias(porcentagem);
+        this.normalizar = normalizar;
+        if (this.normalizar) {
+            this.treino.normalizarMinMax();
+        }
+    }
+
+    public void setConjuntoTeste(Conjunto teste) throws Exception {
+        this.teste = (Conjunto) teste.clone();
+        if (this.normalizar) {
+            this.teste.normalizarMinMax();
         }
     }
 
@@ -69,7 +87,7 @@ public class KNN {
 
                 caracteristicas = new Caracteristica[strCaracteristicas.length - 1];
                 for (int i = 0; i < strCaracteristicas.length - 1; i++) {
-                    caracteristicas[i] = new Caracteristica(Double.parseDouble(strCaracteristicas[i]));
+                    caracteristicas[i] = new Caracteristica(Double.parseDouble(strCaracteristicas[i]), Tipo.CONTRASTE);
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.BART));
             }

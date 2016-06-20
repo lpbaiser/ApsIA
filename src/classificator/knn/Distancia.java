@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package knn;
+package classificator.knn;
 
 import data.Caracteristica;
 import data.Instancia;

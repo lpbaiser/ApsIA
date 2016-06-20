@@ -5,6 +5,8 @@
  */
 package image;
 
+import data.Caracteristica;
+import data.Tipo;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import javax.imageio.ImageIO;
  */
 public class Image {
 
-    Color[][] image;
+    private final Color[][] image;
 
     public Image(InputStream inputStream) {
         try {
@@ -40,7 +42,21 @@ public class Image {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(Image.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException("Falha ao ler imagem");
         }
+    }
+
+    public Caracteristica extrairCaracteristica(Tipo tipo) {
+        switch (tipo) {
+            case CONTRASTE:
+                break;
+            case COR:
+                break;
+            case HUG:
+                break;
+            default:
+                return null;
+        }
+        throw new UnsupportedOperationException();
     }
 }

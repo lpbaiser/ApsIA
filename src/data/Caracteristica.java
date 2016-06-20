@@ -14,8 +14,9 @@ public class Caracteristica {
     private double valor;
     private Tipo tipo;
 
-    public Caracteristica(double valor) {
+    public Caracteristica(double valor, Tipo tipo) {
         this.valor = valor;
+        this.tipo = tipo;
     }
 
     public double getValor() {
@@ -32,7 +33,7 @@ public class Caracteristica {
 
     @Override
     public Object clone() {
-        return new Caracteristica(this.valor);
+        return new Caracteristica(this.valor, this.tipo);
     }
 
 }

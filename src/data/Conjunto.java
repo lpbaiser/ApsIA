@@ -143,7 +143,7 @@ public final class Conjunto implements Iterable<Instancia> {
     }
 
     @Override
-    protected Object clone() {
+    public Object clone() {
         try {
             return new Conjunto(this.instancias);
         } catch (Exception ex) {
