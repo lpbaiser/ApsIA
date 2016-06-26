@@ -5,6 +5,7 @@
  */
 package image;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import data.Caracteristica;
 import data.Tipo;
 import java.awt.Color;
@@ -31,14 +32,14 @@ public class Image {
                 for (int y = 0; y < bufferedImage.getHeight(); y++) {
                     Color c = new Color(bufferedImage.getRGB(x, y));
                     this.image[x][y] = c;
-                    System.out.print(c.getRed());
-                    System.out.print("\t");
-                    System.out.print(c.getGreen());
-                    System.out.print("\t");
-                    System.out.print(c.getBlue());
-                    System.out.print("\t");
-                    System.out.print(c.getAlpha());
-                    System.out.println();
+//                    System.out.print(c.getRed());
+//                    System.out.print("\t");
+//                    System.out.print(c.getGreen());
+//                    System.out.print("\t");
+//                    System.out.print(c.getBlue());
+//                    System.out.print("\t");
+//                    System.out.print(c.getAlpha());
+//                    System.out.println();
                 }
             }
         } catch (IOException ex) {
@@ -59,4 +60,9 @@ public class Image {
         }
         throw new UnsupportedOperationException();
     }
+
+    public Color[][] getImage() {
+        return image;
+    }
+    
 }
