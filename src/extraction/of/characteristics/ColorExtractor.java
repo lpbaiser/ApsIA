@@ -2,6 +2,8 @@ package extraction.of.characteristics;
 
 import image.Image;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,7 +20,7 @@ public class ColorExtractor {
     private int margeHair = 0;
     private int margeDress = 0;
 
-    public void colorExtractor(Image image) {
+    public void colorExtractorSimple(Image image) {
         Color[][] imageColors = image.getImage();
 
         for (Color[] color : imageColors) {
@@ -43,6 +45,33 @@ public class ColorExtractor {
             }
         }
 
+    }
+
+    @Deprecated
+    private List<Color[][]> separateImage(Color[][] imageColors) {
+        int tam = imageColors.length;
+        int parte = imageColors.length / 3;
+        Color[][] imageColorsTop = null;
+        Color[][] imageColorsMiddle = null;
+        Color[][] imageColorsBottom = null;
+        List<Color[][]> matrixImageSeparate = new ArrayList<>();
+        int linha = 0;
+        for (Color[] colors : imageColorsBottom) {
+            if (linha < parte) {
+                imageColorsTop[linha] = colors;
+            } else if (linha >= parte && linha <= parte * 2) {
+                imageColorsMiddle[linha] = colors;
+            } else {
+                imageColorsTop[linha] = colors;
+            }
+            linha++;
+        }
+
+        matrixImageSeparate.add(imageColorsTop);
+        matrixImageSeparate.add(imageColorsMiddle);
+        matrixImageSeparate.add(imageColorsMiddle);
+
+        return matrixImageSeparate;
     }
 
     public int getBartShirt() {
