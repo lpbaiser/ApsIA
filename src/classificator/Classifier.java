@@ -6,6 +6,7 @@
 package classificator;
 
 import data.Classe;
+import data.Conjunto;
 import data.Instancia;
 
 /**
@@ -14,6 +15,8 @@ import data.Instancia;
  */
 public interface Classifier {
 
+    public abstract void setConjuntoTeste(Conjunto conjunto);
+    
     public abstract void classify();
 
     public abstract Classe classify(Instancia instancia);

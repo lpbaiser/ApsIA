@@ -14,24 +14,32 @@ import java.util.Map;
 public class ColorExtractor implements Extractor<Color> {
 
     private Image image;
-    private int bartShirt = 0;
-    private int bartShortsAndShoes = 0;
-    private int homerBeard = 0;
-    private int homerPants = 0;
-    private int lisaDressAndMaggiePacifierAndMargeItems = 0;
-    private int maggiePijamas = 0;
-    private int margeHair = 0;
-    private int margeDress = 0;
+    private int bartShirt;
+    private int bartShortsAndShoes;
+    private int homerBeard;
+    private int homerPants;
+    private int lisaDressAndMaggiePacifierAndMargeItems;
+    private int maggiePijamas;
+    private int margeHair;
+    private int margeDress;
 
-    public ColorExtractor() {
-    }
-
-    public ColorExtractor(Image image) {
+    @Override
+    public void setImage(Image image) {
         this.image = image;
+        this.bartShirt = 0;
+        this.bartShortsAndShoes = 0;
+        this.homerBeard = 0;
+        this.homerPants = 0;
+        this.lisaDressAndMaggiePacifierAndMargeItems = 0;
+        this.maggiePijamas = 0;
+        this.margeHair = 0;
+        this.margeDress = 0;
     }
 
-    //resetar contadores ou criar contrutor
-    public void colorExtractorSimple(Image image) {
+    public void colorExtractorSimple() {
+        if (image == null) {
+            throw new RuntimeException("imagem nula");
+        }
         Color[][] imageColors = image.getColors();
 
         for (Color[] color : imageColors) {

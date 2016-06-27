@@ -59,7 +59,8 @@ public class KNN implements Classifier {
         }
     }
 
-    public void setConjuntoTeste(Conjunto teste) throws Exception {
+    @Override
+    public void setConjuntoTeste(Conjunto teste) {
         this.teste = (Conjunto) teste.clone();
         if (this.normalizar) {
             this.teste.normalizarMinMax();

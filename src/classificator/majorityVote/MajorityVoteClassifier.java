@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classificator.votoMajoritario;
+package classificator.majorityVote;
 
 import classificator.Classifier;
 import classificator.Confusao;
@@ -22,16 +22,21 @@ public class MajorityVoteClassifier implements Classifier {
 
     private Conjunto treino;
     private Conjunto teste;
-    private KNN knn;
+    private Classifier knn;
 
-    public MajorityVoteClassifier(Conjunto treino, Conjunto teste) {
+    public MajorityVoteClassifier(Conjunto treino) {
+        this.treino = (Conjunto) treino.clone();
         try {
-            this.treino = (Conjunto) treino.clone();
             this.knn = new KNN(3, treino);
-            this.knn.setConjuntoTeste(teste);
         } catch (Exception ex) {
             Logger.getLogger(MajorityVoteClassifier.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void setConjuntoTeste(Conjunto conjunto) {
+        this.teste = (Conjunto) conjunto.clone();
+        this.knn.setConjuntoTeste(teste);
     }
 
     @Override

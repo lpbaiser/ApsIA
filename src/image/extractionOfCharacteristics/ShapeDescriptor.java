@@ -7,22 +7,22 @@ import java.awt.Color;
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class ShapeDescriptor implements Extractor<String[][]> {
+public class ShapeDescriptor implements Extractor<Integer> {
 
     private Image image;
 
-    public String[][] getContourImage(Image image) {
+    public Boolean[][] getContourImage() {
         Color[][] imageColors = image.getColors();
-        String[][] imageString = new String[imageColors.length][];
+        Boolean[][] imageString = new Boolean[imageColors.length][];
         int i = 0, j = 0;
         for (Color[] imageColor : imageColors) {
-            imageString[i] = new String[imageColor.length];
+            imageString[i] = new Boolean[imageColor.length];
             for (Color color : imageColor) {
                 if (color.getRGB() != -1) {
-                    imageString[i][j] = "1";
+                    imageString[i][j] = true;
                 }
                 if (color.getRGB() == -1) {
-                    imageString[i][j] = "0";
+                    imageString[i][j] = false;
                 }
                 j++;
             }
@@ -33,8 +33,25 @@ public class ShapeDescriptor implements Extractor<String[][]> {
     }
 
     @Override
-    public String[][] getCharacteristic() {
-        return getContourImage(image);
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public int getPerimetro() {
+        int perimetro = 0;
+        for (Boolean[] booleans : getContourImage()) {
+            for (Boolean aBoolean : booleans) {
+                if (aBoolean) {
+                    perimetro++;
+                }
+            }
+        }
+        return perimetro;
+    }
+
+    @Override
+    public Integer getCharacteristic() {
+        return getPerimetro();
     }
 
 }

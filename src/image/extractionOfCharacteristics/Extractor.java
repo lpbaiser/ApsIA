@@ -5,11 +5,15 @@
  */
 package image.extractionOfCharacteristics;
 
+import image.Image;
+
 /**
  *
  * @author romulo
  */
 public interface Extractor<T> {
+
+    public abstract void setImage(Image image);
 
     public abstract T getCharacteristic();
 

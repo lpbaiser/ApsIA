@@ -10,19 +10,19 @@ package data;
  * @author romulo
  */
 public enum Classe {
-    BART, MARGIE, HOMER, MEGGIE, LIZA;
+    BART, HOMER, LISA, MAGGIE, MARGE;
 
     public int toInt() {
         switch (this) {
             case BART:
                 return 0;
-            case MARGIE:
+            case MARGE:
                 return 1;
             case HOMER:
                 return 2;
-            case MEGGIE:
+            case MAGGIE:
                 return 3;
-            case LIZA:
+            case LISA:
                 return 4;
             default:
                 return -1;

@@ -1,6 +1,5 @@
 package image.extractionOfCharacteristics;
 
-import image.extractionOfCharacteristics.ColorExtractor;
 import image.Image;
 import java.io.InputStream;
 import org.junit.Test;
@@ -16,7 +15,8 @@ public class ColorExtractorTest {
         InputStream inputStream = getClass().getResourceAsStream("/Train/bart001.bmp");
         Image image = new Image(inputStream);
         ColorExtractor colorExtractor = new ColorExtractor();
-        colorExtractor.colorExtractorSimple(image);
+        colorExtractor.setImage(image);
+        colorExtractor.colorExtractorSimple();
     }
 
 }

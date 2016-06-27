@@ -10,5 +10,5 @@ package data;
  * @author romulo
  */
 public enum Tipo {
-    HUG, COR, CONTRASTE;
+    HUG, COR, CONTRASTE, PERIMETER_OF_BORDER;
 }
