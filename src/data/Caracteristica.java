@@ -9,21 +9,21 @@ package data;
  *
  * @author romulo
  */
-public class Caracteristica {
+public class Caracteristica<T> {
 
-    private double valor;
+    private T valor;
     private Tipo tipo;
 
-    public Caracteristica(double valor, Tipo tipo) {
+    public Caracteristica(T valor, Tipo tipo) {
         this.valor = valor;
         this.tipo = tipo;
     }
 
-    public double getValor() {
+    public T getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(T valor) {
         this.valor = valor;
     }
 

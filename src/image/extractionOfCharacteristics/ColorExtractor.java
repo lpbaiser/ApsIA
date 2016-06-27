@@ -1,16 +1,19 @@
-package extraction.of.characteristics;
+package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class ColorExtractor {
+public class ColorExtractor implements Extractor<Color> {
 
+    private Image image;
     private int bartShirt = 0;
     private int bartShortsAndShoes = 0;
     private int homerBeard = 0;
@@ -20,8 +23,16 @@ public class ColorExtractor {
     private int margeHair = 0;
     private int margeDress = 0;
 
+    public ColorExtractor() {
+    }
+
+    public ColorExtractor(Image image) {
+        this.image = image;
+    }
+
+    //resetar contadores ou criar contrutor
     public void colorExtractorSimple(Image image) {
-        Color[][] imageColors = image.getImage();
+        Color[][] imageColors = image.getColors();
 
         for (Color[] color : imageColors) {
             for (Color c : color) {
@@ -104,6 +115,39 @@ public class ColorExtractor {
 
     public int getMargeDress() {
         return margeDress;
+    }
+
+    /**
+     * Obtém a cor predominante desconsiderando a margem de erro implementada em
+     * coloExtractorSimple.
+     *
+     * @return
+     */
+    public Color getPredominantColor() {
+        Integer quantity;
+        HashMap<Color, Integer> colorHasCounter = new HashMap<>();
+        for (Color[] line : image.getColors()) {
+            for (Color color : line) {
+                quantity = colorHasCounter.get(color);
+                if (quantity == null) {
+                    quantity = 0;
+                }
+                quantity++;
+                colorHasCounter.put(color, quantity);
+            }
+        }
+        Map.Entry<Color, Integer> predominantColor = colorHasCounter.entrySet().iterator().next();
+        for (Map.Entry<Color, Integer> entry : colorHasCounter.entrySet()) {
+            if (entry.getValue() > predominantColor.getValue()) {
+                predominantColor = entry;
+            }
+        }
+        return predominantColor.getKey();
+    }
+
+    @Override
+    public Color getCharacteristic() {
+        return getPredominantColor();
     }
 
 }

@@ -1,5 +1,6 @@
-package extraction.of.characteristics;
+package image.extractionOfCharacteristics;
 
+import image.extractionOfCharacteristics.ShapeDescriptor;
 import image.Image;
 import java.io.InputStream;
 import org.junit.Test;

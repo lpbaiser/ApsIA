@@ -5,9 +5,10 @@
  */
 package image;
 
-import com.sun.org.apache.bcel.internal.classfile.Code;
 import data.Caracteristica;
 import data.Tipo;
+import image.extractionOfCharacteristics.ColorExtractor;
+import image.extractionOfCharacteristics.Extractor;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -20,24 +21,16 @@ import javax.imageio.ImageIO;
  */
 public class Image {
 
-    private final Color[][] image;
+    private final Color[][] colors;
 
     public Image(InputStream inputStream) {
         try {
             BufferedImage bufferedImage = ImageIO.read(inputStream);
-            image = new Color[bufferedImage.getWidth()][bufferedImage.getHeight()];
+            colors = new Color[bufferedImage.getWidth()][bufferedImage.getHeight()];
             for (int x = 0; x < bufferedImage.getWidth(); x++) {
                 for (int y = 0; y < bufferedImage.getHeight(); y++) {
                     Color c = new Color(bufferedImage.getRGB(x, y));
-                    this.image[x][y] = c;
-//                    System.out.print(c.getRed());
-//                    System.out.print("\t");
-//                    System.out.print(c.getGreen());
-//                    System.out.print("\t");
-//                    System.out.print(c.getBlue());
-//                    System.out.print("\t");
-//                    System.out.print(c.getAlpha());
-//                    System.out.println();
+                    this.colors[x][y] = c;
                 }
             }
         } catch (IOException ex) {
@@ -46,11 +39,13 @@ public class Image {
     }
 
     public Caracteristica extrairCaracteristica(Tipo tipo) {
+        Extractor extractor;
         switch (tipo) {
             case CONTRASTE:
                 break;
             case COR:
-                break;
+                extractor = new ColorExtractor();
+                return new Caracteristica(extractor.getCharacteristic(), Tipo.COR);
             case HUG:
                 break;
             default:
@@ -59,8 +54,8 @@ public class Image {
         throw new UnsupportedOperationException();
     }
 
-    public Color[][] getImage() {
-        return image;
+    public Color[][] getColors() {
+        return colors;
     }
-    
+
 }

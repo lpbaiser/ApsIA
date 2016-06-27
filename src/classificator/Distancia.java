@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classificator.knn;
+package classificator;
 
 import data.Caracteristica;
 import data.Instancia;
@@ -50,10 +50,16 @@ public class Distancia implements Comparable<Distancia> {
             throw new Exception("Vetores de tamanhos diferentes");
         }
         double sum = 0;
+        Double valorA;
+        Double valorB;
         while (iteratorA.hasNext() && iteratorB.hasNext()) {
             caracteristicaA = iteratorA.next();
             caracteristicaB = iteratorB.next();
-            sum += Math.pow(caracteristicaA.getValor() - caracteristicaB.getValor(), 2);
+            if (caracteristicaA.getClass().isPrimitive() && caracteristicaB.getClass().isPrimitive()) {
+                valorA = (Double) caracteristicaA.getValor();
+                valorB = (Double) caracteristicaB.getValor();
+                sum += Math.pow(valorA - valorB, 2);
+            }
         }
         setDistance(Math.sqrt(sum));
     }

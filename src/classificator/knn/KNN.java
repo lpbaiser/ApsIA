@@ -5,6 +5,9 @@
  */
 package classificator.knn;
 
+import classificator.Distancia;
+import classificator.Confusao;
+import classificator.Classifier;
 import data.Instancia;
 import data.Conjunto;
 import data.Classe;
@@ -22,7 +25,7 @@ import java.util.List;
  *
  * @author romulo
  */
-public class KNN {
+public class KNN implements Classifier {
 
     private final int k;
     private final Conjunto treino;
@@ -38,6 +41,12 @@ public class KNN {
         if (this.normalizar) {
             this.treino.normalizarMinMax();
         }
+    }
+
+    public KNN(int k, Conjunto treino) throws Exception {
+        this.k = k;
+        this.treino = (Conjunto) treino.clone();
+        this.normalizar = false;
     }
 
     public KNN(int k, Conjunto treino, int porcentagem, boolean normalizar) throws Exception {
@@ -99,6 +108,7 @@ public class KNN {
         return conjunto;
     }
 
+    @Override
     public void classify() {
         Classe classifiedAs;
 
@@ -111,6 +121,7 @@ public class KNN {
         }
     }
 
+    @Override
     public Classe classify(Instancia instancia) {
         List<Distancia> distancias;
         Distancia distancia;
@@ -140,6 +151,7 @@ public class KNN {
         }
     }
 
+    @Override
     public Confusao getMatrizConfusao() {
         return confusao;
     }

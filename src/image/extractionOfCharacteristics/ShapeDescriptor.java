@@ -1,4 +1,4 @@
-package extraction.of.characteristics;
+package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
@@ -7,10 +7,12 @@ import java.awt.Color;
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class ShapeDescriptor {
+public class ShapeDescriptor implements Extractor<String[][]> {
+
+    private Image image;
 
     public String[][] getContourImage(Image image) {
-        Color[][] imageColors = image.getImage();
+        Color[][] imageColors = image.getColors();
         String[][] imageString = new String[imageColors.length][];
         int i = 0, j = 0;
         for (Color[] imageColor : imageColors) {
@@ -28,6 +30,11 @@ public class ShapeDescriptor {
             i++;
         }
         return imageString;
+    }
+
+    @Override
+    public String[][] getCharacteristic() {
+        return getContourImage(image);
     }
 
 }
