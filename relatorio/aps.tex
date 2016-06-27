@@ -7,16 +7,16 @@
 \usepackage{lscape}
 \usepackage{geometry}
 \usepackage{float}
-
+\usepackage{cite}
 \sloppy
 
 \title{Algoritmo A* para resolução da Árvore Geradora de Rótulos Mínimos}
 
-\author{Marco Cezar Moreira de Mattos\inst{1}, Rômulo Manciola Meloca\inst{1}}
+\author{Leonardo Pontes Baiser\inst{1} ,Marco Cezar Moreira de Mattos\inst{1}, Rômulo Manciola Meloca\inst{1}}
 
 \address{DACOM -- Universidade Tecnológica Federal do Paraná (UTFPR)\\
   Caixa Postal 271 -- 87301-899 -- Campo Mourão -- PR -- Brazil
-  \email{\{marco.cmm,rmeloca\}@gmail.com}
+  \email{\{lpbaiser, marco.cmm,rmeloca\}@gmail.com}
 }
 
 \begin{document}
@@ -58,16 +58,6 @@ Utilizou-se no diagrama cor cinza para os elementos previamente implementados e 
 
 Segue a imagem do diagrama construído com o auxílio do \textit{software} gratuito de modelagem Astah.
 
-\newgeometry{left=0cm,bottom=0cm,right=0cm,top=0cm}
-\begin{landscape}
-\centering
-\begin{figure}[p]
-\includegraphics[width=1.4\textwidth]{ClassDiagram.png}
-\caption{Diagrama de Classes}
-\label{fig:classDiagram}
-\end{figure}
-\end{landscape}
-\restoregeometry
 
 Acima visualizou-se o diagrama de classes mostrando os arquivos e estruturas criadas, bem como os métodos e atributos que detectou-se em cada objeto. Na subseção seguinte são detalhadas as interfaces criadas.
 
@@ -117,4 +107,9 @@ Considera-se, por fim, que o desenvolvimento de um projeto que conta com várias
 
 Conclui-se que aplicações de determinada escala demandam a produção de vários artefatos, que somente são produzidos após o fiel debruçar-se nas ideias e adiantar-se a respeito de todos os problemas que são solucionados e gerados a partir delas. Toma-se como proveito o pensar em soluções que possam ser integradas a demais programas e o pensar em abstrações e interfaces que possam ser escaladas e reutilizadas.
 
-\end{document}
+Exemplo de referência CC01a ~\cite{CC01}.
+
+\bibliography{references}{}
+\bibliographystyle{plain}
+
+\end{document}	

@@ -15,7 +15,7 @@ public class ColorExtractorTest {
         InputStream inputStream = getClass().getResourceAsStream("/Train/bart001.bmp");
         Image image = new Image(inputStream);
         ColorExtractor colorExtractor = new ColorExtractor();
-        colorExtractor.colorExtractor(image);
+        colorExtractor.colorExtractorSimple(image);
     }
 
 }
