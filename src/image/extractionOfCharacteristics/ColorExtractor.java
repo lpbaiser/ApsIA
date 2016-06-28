@@ -11,6 +11,7 @@ import java.util.Map;
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
+@Deprecated//PRECISA NORMALIZAR
 public class ColorExtractor implements Extractor<Color> {
 
     private Image image;

@@ -11,8 +11,8 @@ import classificator.knn.KNN;
 import data.Classe;
 import data.Conjunto;
 import data.Instancia;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import dt.DecisionTree;
+import libsvm.svm;
 
 /**
  *
@@ -22,21 +22,26 @@ public class MajorityVoteClassifier implements Classifier {
 
     private Conjunto treino;
     private Conjunto teste;
-    private Classifier knn;
+    private final Classifier knn;
+    private svm svm;
+    private DecisionTree decisionTree;
 
     public MajorityVoteClassifier(Conjunto treino) {
         this.treino = (Conjunto) treino.clone();
         try {
             this.knn = new KNN(3, treino);
         } catch (Exception ex) {
-            Logger.getLogger(MajorityVoteClassifier.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RuntimeException("Impossível inicializar jogador");
         }
+        svm = new svm();
+        decisionTree = new DecisionTree();
     }
 
     @Override
     public void setConjuntoTeste(Conjunto conjunto) {
         this.teste = (Conjunto) conjunto.clone();
         this.knn.setConjuntoTeste(teste);
+
     }
 
     @Override
