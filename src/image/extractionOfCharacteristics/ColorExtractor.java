@@ -36,36 +36,6 @@ public class ColorExtractor implements Extractor<Color> {
         this.margeDress = 0;
     }
 
-    public void colorExtractorSimple() {
-        if (image == null) {
-            throw new RuntimeException("imagem nula");
-        }
-        Color[][] imageColors = image.getColors();
-
-        for (Color[] color : imageColors) {
-            for (Color c : color) {
-                if ((c.getRed() == 247) && (c.getGreen() == 99) && (c.getBlue() == 16)) {//camiseta laranja do Bart
-                    this.bartShirt++;
-                } else if ((c.getRed() == 0) && (c.getGreen() == 8) && (c.getBlue() == 132)) {//tenis e shorts do Bart
-                    this.bartShortsAndShoes++;
-                } else if ((c.getRed() == 189) && (c.getGreen() == 173) && (c.getBlue() == 107)) { //barba do Homer
-                    this.homerBeard++;
-                } else if ((c.getRed() == 0) && (c.getGreen() == 107) && (c.getBlue() == 173)) {//calça do Homer
-                    this.homerPants++;
-                } else if ((c.getRed() == 255) && (c.getGreen() == 0) && (c.getBlue() == 0)) {//vestido da Lisa, chupeta da Maggie e Acessórios da Marge
-                    this.lisaDressAndMaggiePacifierAndMargeItems++;
-                } else if ((c.getRed() == 0) && (c.getGreen() == 156) && (c.getBlue() == 222)) {//vestido da Maggie
-                    this.maggiePijamas++;
-                } else if ((c.getRed() == 0) && (c.getGreen() == 66) && (c.getBlue() == 132)) {//cabelo da Marge
-                    this.margeHair++;
-                } else if ((c.getRed() > 138 && c.getRed() < 160) && (c.getGreen() > 170 && c.getGreen() < 208) && (c.getBlue() > 20 && c.getBlue() < 40)) { //vestido da Marge
-                    this.margeDress++;
-                }
-            }
-        }
-
-    }
-
     @Deprecated
     private List<Color[][]> separateImage(Color[][] imageColors) {
         int tam = imageColors.length;
@@ -136,8 +106,24 @@ public class ColorExtractor implements Extractor<Color> {
      * @return
      */
     public Color getPredominantColor() {
+        if (image == null) {
+            throw new RuntimeException("imagem nula");
+        }
+        
         Integer quantity;
         HashMap<Color, Integer> colorHasCounter = new HashMap<>();
+
+        colorHasCounter.put(new Color(247, 99, 16), 0);//camiseta laranja do Bart
+        colorHasCounter.put(new Color(0, 8, 132), 0);//tenis e shorts do Bart
+        colorHasCounter.put(new Color(189, 173, 107), 0);//barba do Homer
+        colorHasCounter.put(new Color(0, 107, 173), 0);//calça do Homer
+        colorHasCounter.put(new Color(255, 0, 0), 0);//vestido da Lisa, chupeta da Maggie e Acessórios da Marge
+        colorHasCounter.put(new Color(0, 156, 222), 0);//vestido da Maggie
+        colorHasCounter.put(new Color(0, 66, 132), 0);//cabelo da Marge
+        colorHasCounter.put(new Color(149, 189, 30), 0);//vestido da Marge
+        //R 138 e 160; G 170 e 208; B 20 e 40
+        int tolerance = 20;
+
         for (Color[] line : image.getColors()) {
             for (Color color : line) {
                 quantity = colorHasCounter.get(color);
