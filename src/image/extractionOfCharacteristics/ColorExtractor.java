@@ -11,7 +11,6 @@ import java.util.Map;
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-@Deprecated//PRECISA NORMALIZAR
 public class ColorExtractor implements Extractor<Color> {
 
     private Image image;
@@ -94,36 +93,40 @@ public class ColorExtractor implements Extractor<Color> {
         return matrixImageSeparate;
     }
 
+    private int normalizeCharacteristic(int characteristic) {
+        return characteristic / (image.getColors().length * image.getColors()[0].length);
+    }
+
     public int getBartShirt() {
-        return bartShirt;
+        return normalizeCharacteristic(bartShirt);
     }
 
     public int getBartShortsAndShoes() {
-        return bartShortsAndShoes;
+        return normalizeCharacteristic(bartShortsAndShoes);
     }
 
     public int getHomerBeard() {
-        return homerBeard;
+        return normalizeCharacteristic(homerBeard);
     }
 
     public int getHomerPants() {
-        return homerPants;
+        return normalizeCharacteristic(homerPants);
     }
 
     public int getLisaDressAndMaggiePacifierAndMargeItems() {
-        return lisaDressAndMaggiePacifierAndMargeItems;
+        return normalizeCharacteristic(lisaDressAndMaggiePacifierAndMargeItems);
     }
 
     public int getMaggiePijamas() {
-        return maggiePijamas;
+        return normalizeCharacteristic(maggiePijamas);
     }
 
     public int getMargeHair() {
-        return margeHair;
+        return normalizeCharacteristic(margeHair);
     }
 
     public int getMargeDress() {
-        return margeDress;
+        return normalizeCharacteristic(margeDress);
     }
 
     /**
