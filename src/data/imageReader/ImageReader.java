@@ -47,15 +47,15 @@ public class ImageReader {
             nomeArquivo = iteratorNomesArquivos.next();
             inputStreamImage = getClass().getResourceAsStream(folder + nomeArquivo);
             Classe classe = null;
-            if (nomeArquivo.contains("homer")) {
+            if (nomeArquivo.startsWith("homer")) {
                 classe = Classe.HOMER;
-            } else if (nomeArquivo.contains("bart")) {
+            } else if (nomeArquivo.startsWith("bart")) {
                 classe = Classe.BART;
-            } else if (nomeArquivo.contains("lisa")) {
+            } else if (nomeArquivo.startsWith("lisa")) {
                 classe = Classe.LISA;
-            } else if (nomeArquivo.contains("maggie")) {
+            } else if (nomeArquivo.startsWith("maggie")) {
                 classe = Classe.MAGGIE;
-            } else if (nomeArquivo.contains("marge")) {
+            } else if (nomeArquivo.startsWith("marge")) {
                 classe = Classe.MARGE;
             }
 

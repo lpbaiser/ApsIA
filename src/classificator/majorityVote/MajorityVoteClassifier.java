@@ -26,7 +26,6 @@ public class MajorityVoteClassifier implements Classifier {
     private Conjunto teste;
     private final Classifier knn;
     private Confusao confusao;
-    private svm svm;
     private DecisionTree decisionTree;
 
     public MajorityVoteClassifier(Conjunto treino) {
@@ -36,7 +35,6 @@ public class MajorityVoteClassifier implements Classifier {
         } catch (Exception ex) {
             throw new RuntimeException("Impossível inicializar jogador");
         }
-        svm = new svm();
         decisionTree = new DecisionTree();
     }
 
