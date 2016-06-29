@@ -26,7 +26,7 @@ public class ImageReader {
 
     public ImageReader() {
         this.extratores = new ArrayList<>();
-        extratores.add(new ShapeDescriptor());
+//        extratores.add(new ShapeDescriptor());
         extratores.add(new ColorExtractor());
     }
 

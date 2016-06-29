@@ -5,7 +5,6 @@
  */
 package image;
 
-import image.Image;
 import java.io.InputStream;
 import org.junit.Test;
 

@@ -16,7 +16,7 @@ public class ColorExtractorTest {
         Image image = new Image(inputStream);
         ColorExtractor colorExtractor = new ColorExtractor();
         colorExtractor.setImage(image);
-        colorExtractor.colorExtractorSimple();
+//        colorExtractor.colorExtractorSimple();
     }
 
 }

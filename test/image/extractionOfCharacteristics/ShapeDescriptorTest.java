@@ -1,6 +1,5 @@
 package image.extractionOfCharacteristics;
 
-import image.extractionOfCharacteristics.ShapeDescriptor;
 import image.Image;
 import java.io.InputStream;
 import org.junit.Test;
@@ -16,13 +15,9 @@ public class ShapeDescriptorTest {
         InputStream inputStream = getClass().getResourceAsStream("/Train/bart004.bmp");
         Image image = new Image(inputStream);
         ShapeDescriptor shapeDescriptor = new ShapeDescriptor();
+        shapeDescriptor.setImage(image);
 
-        Boolean[][] imageString = shapeDescriptor.getContourImage();
-        for (Boolean[] booleans : imageString) {
-            for (Boolean aBoolean : booleans) {
-                System.out.println(aBoolean);
-            }
-        }
+        System.out.println("Perimetro: " + shapeDescriptor.getCharacteristic());
     }
 
 }
