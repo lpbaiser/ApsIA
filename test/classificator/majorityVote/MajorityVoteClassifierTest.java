@@ -5,6 +5,7 @@
  */
 package classificator.majorityVote;
 
+import classificator.Confusao;
 import data.Conjunto;
 import data.imageReader.ImageReader;
 import org.junit.Test;
@@ -27,6 +28,18 @@ public class MajorityVoteClassifierTest {
         majorityVoteClassifier = new MajorityVoteClassifier(treino);
         Conjunto test = imageReader.parseFolder("/Valid/");
         majorityVoteClassifier.setConjuntoTeste(test);
+
+        majorityVoteClassifier.classify();
+
+        Confusao matrizConfusao = majorityVoteClassifier.getMatrizConfusao();
+
+        for (int[] is : matrizConfusao.getMatrizConfusao()) {
+            for (int i : is) {
+                System.out.print(i + ", ");
+            }
+            System.out.println();
+        }
+
     }
 
 }

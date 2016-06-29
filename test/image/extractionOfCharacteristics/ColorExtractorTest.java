@@ -9,14 +9,14 @@ import org.junit.Test;
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
 public class ColorExtractorTest {
-    
+
     @Test
-    public void testColorExtractor(){
+    public void testColorExtractor() {
         InputStream inputStream = getClass().getResourceAsStream("/Train/bart001.bmp");
         Image image = new Image(inputStream);
         ColorExtractor colorExtractor = new ColorExtractor();
         colorExtractor.setImage(image);
-//        colorExtractor.colorExtractorSimple();
+        colorExtractor.getCharacteristic();
     }
 
 }
