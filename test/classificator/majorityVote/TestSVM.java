@@ -5,13 +5,13 @@
  */
 package classificator.majorityVote;
 
+import classificator.svm.svm_train;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import libsvm.svm;
 import org.junit.Test;
 
 /**
@@ -27,7 +27,8 @@ public class TestSVM {
             InputStream inputStream = getClass().getResourceAsStream("/classificator/majorityVote/arquivoTreino.SVM");
             InputStreamReader insInputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(insInputStreamReader);
-            svm.svm_load_model(bufferedReader);
+            String[] args = {"/data/documents/workspace/ApsIA/test/classificator/majorityVote/arquivoTreino.SVM"};
+            svm_train.main(args);
             
         } catch (IOException ex) {
             Logger.getLogger(MajorityVoteClassifierTest.class.getName()).log(Level.SEVERE, null, ex);

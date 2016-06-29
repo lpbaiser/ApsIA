@@ -14,7 +14,6 @@ import data.Instancia;
 import dt.DecisionTree;
 import java.util.HashMap;
 import java.util.Map;
-import libsvm.svm;
 
 /**
  *

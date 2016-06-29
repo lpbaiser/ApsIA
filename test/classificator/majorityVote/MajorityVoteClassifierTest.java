@@ -8,11 +8,6 @@ package classificator.majorityVote;
 import classificator.Confusao;
 import data.Conjunto;
 import data.imageReader.ImageReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import libsvm.svm;
-import libsvm.svm_model;
 import org.junit.Test;
 
 /**
