@@ -68,6 +68,9 @@ public class MajorityVoteClassifier implements Classifier {
         classifierClassifyAs = knn.classify(instancia);
 
         votes = classeHasVotos.get(classifierClassifyAs);
+        if (votes == null) {
+            votes = 0;
+        }
         votes++;
         classeHasVotos.put(classifierClassifyAs, votes);
 

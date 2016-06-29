@@ -28,4 +28,21 @@ public enum Classe {
                 return -1;
         }
     }
+
+    public static Classe parseInt(int classe) {
+        switch (classe) {
+            case 0:
+                return BART;
+            case 1:
+                return MARGE;
+            case 2:
+                return HOMER;
+            case 3:
+                return MAGGIE;
+            case 4:
+                return LISA;
+            default:
+                return null;
+        }
+    }
 }

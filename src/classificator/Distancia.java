@@ -7,6 +7,7 @@ package classificator;
 
 import data.Caracteristica;
 import data.Instancia;
+import java.awt.Color;
 import java.util.Iterator;
 
 /**
@@ -50,16 +51,19 @@ public class Distancia implements Comparable<Distancia> {
             throw new Exception("Vetores de tamanhos diferentes");
         }
         double sum = 0;
-        Double valorA;
-        Double valorB;
+        double valorA = 0;
+        double valorB = 0;
         while (iteratorA.hasNext() && iteratorB.hasNext()) {
             caracteristicaA = iteratorA.next();
             caracteristicaB = iteratorB.next();
             if (caracteristicaA.getClass().isPrimitive() && caracteristicaB.getClass().isPrimitive()) {
                 valorA = (Double) caracteristicaA.getValor();
                 valorB = (Double) caracteristicaB.getValor();
-                sum += Math.pow(valorA - valorB, 2);
+            } else if (caracteristicaA.getValor() instanceof Color && caracteristicaB.getValor() instanceof Color) {
+                valorA = ((Color) caracteristicaA.getValor()).getRGB();
+                valorB = ((Color) caracteristicaB.getValor()).getRGB();
             }
+            sum += Math.pow(valorA - valorB, 2);
         }
         setDistance(Math.sqrt(sum));
     }

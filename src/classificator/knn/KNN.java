@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -134,7 +135,6 @@ public class KNN implements Classifier {
                 distancia = new Distancia(instancia, instanciaTreino);
                 distancia.calculateEuclidienDistance();
                 distancias.add(distancia);
-
             }
             Collections.sort(distancias);
             votos = new int[this.treino.getQuantidadeClasses()];
@@ -145,11 +145,22 @@ public class KNN implements Classifier {
                 votos[distancias.get(0).getTo().getClasse().toInt()]++;
                 distancias.remove(0);
             }
-            return Classe.BART;
+
+            return Classe.parseInt(getIndexDoMaiorValor(votos));
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    private int getIndexDoMaiorValor(int[] a) {
+        int index = 0;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > a[i - 1]) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     @Override
