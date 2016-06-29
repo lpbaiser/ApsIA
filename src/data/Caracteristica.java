@@ -5,6 +5,8 @@
  */
 package data;
 
+import java.awt.Color;
+
 /**
  *
  * @author romulo
@@ -17,6 +19,16 @@ public class Caracteristica<T> {
     public Caracteristica(T valor, Tipo tipo) {
         this.valor = valor;
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        if (valor instanceof Color) {
+            Color c = (Color) valor;
+            return "" + c.getRGB();
+        } else {
+            throw new RuntimeException("Método não suporta a classe");
+        }
     }
 
     public T getValor() {

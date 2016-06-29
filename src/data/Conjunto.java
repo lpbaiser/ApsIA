@@ -5,6 +5,9 @@
  */
 package data;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -153,6 +156,25 @@ public final class Conjunto implements Iterable<Instancia> {
             Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void serializar(String nomeArq) throws IOException {
+        FileWriter arq = new FileWriter(nomeArq+".SVM");
+        PrintWriter gravarArq = new PrintWriter(arq);
+
+        int j, i = 1;
+        for (Instancia instacia : instancias) {
+            j = 1;
+            gravarArq.printf("%d ", i);
+            for (Caracteristica caracteristica : instacia) {
+                gravarArq.printf(" %d:%s", j, caracteristica.toString());
+                j++;
+            }
+            gravarArq.printf("%n");
+            i++;
+        }
+
+        arq.close();
     }
 
 }
