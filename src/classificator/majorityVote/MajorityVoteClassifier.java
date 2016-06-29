@@ -38,6 +38,7 @@ public class MajorityVoteClassifier implements Classifier {
         }
         svm = new svm();
         decisionTree = new DecisionTree();
+        decisionTree.
     }
 
     @Override
