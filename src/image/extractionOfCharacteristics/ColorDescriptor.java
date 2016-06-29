@@ -2,16 +2,26 @@ package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
+import java.awt.color.ColorSpace;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.awt.image.ColorConvertOp;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class ColorExtractor implements Extractor<Color> {
+public class ColorDescriptor implements Extractor<Color> {
 
     private Image image;
     private int bartShirt;
@@ -67,51 +77,6 @@ public class ColorExtractor implements Extractor<Color> {
         return characteristic / (image.getColors().length * image.getColors()[0].length);
     }
 
-    public int getBartShirt() {
-        return normalizeCharacteristic(bartShirt);
-    }
-
-    public int getBartShortsAndShoes() {
-        return normalizeCharacteristic(bartShortsAndShoes);
-    }
-
-    public int getHomerBeard() {
-        return normalizeCharacteristic(homerBeard);
-    }
-
-    public int getHomerPants() {
-        return normalizeCharacteristic(homerPants);
-    }
-
-    public int getLisaDressAndMaggiePacifierAndMargeItems() {
-        return normalizeCharacteristic(lisaDressAndMaggiePacifierAndMargeItems);
-    }
-
-    public int getMaggiePijamas() {
-        return normalizeCharacteristic(maggiePijamas);
-    }
-
-    public int getMargeHair() {
-        return normalizeCharacteristic(margeHair);
-    }
-
-    public int getMargeDress() {
-        return normalizeCharacteristic(margeDress);
-    }
-
-    private int compare(Color gave, Color expected) {
-        int tolerance = 20;
-        Color base = new Color(gave.getRGB() - tolerance);
-        Color topo = new Color(gave.getRGB() + tolerance);
-        if (gave.getRGB() < base.getRGB()) {
-            return -1;
-        } else if (gave.getRGB() > topo.getRGB()) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
     /**
      * Obtém a cor predominante desconsiderando a margem de erro implementada em
      * coloExtractorSimple.
@@ -156,6 +121,80 @@ public class ColorExtractor implements Extractor<Color> {
             }
         }
         return predominantColor.getKey();
+    }
+
+    public int[] getHistogramColorGray() {
+        Color colors[][] = image.getColors();
+        int[] histogram = new int[256];
+
+        for (int i = 0; i < colors.length; i++) {
+            for (int j = 0; j < colors[i].length; j++) {
+                Color c = new Color(colors[i][j].getRGB());
+                int grayTone = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
+                histogram[grayTone]++;
+//                c = new Color(grayTone, grayTone, grayTone);
+//                colors[i][j] = c;
+            }
+        }
+//        BufferedImage bufferedImage = new BufferedImage(colors.length, colors[0].length, BufferedImage.TYPE_INT_RGB);
+//
+//        for (int x = 0; x < colors.length; x++) {
+//            for (int y = 0; y < colors[x].length; y++) {
+//                bufferedImage.setRGB(x, y, colors[x][y].getRGB());
+//            }
+//        }
+
+//        try {
+//            ImageIO.write(bufferedImage, "JPG", new File("/home/leonardo/Dropbox/IA/ApsIA/teste.jpg"));
+//        } catch (IOException ex) {
+//            Logger.getLogger(ColorDescriptor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return histogram;
+    }
+
+    public int getBartShirt() {
+        return normalizeCharacteristic(bartShirt);
+    }
+
+    public int getBartShortsAndShoes() {
+        return normalizeCharacteristic(bartShortsAndShoes);
+    }
+
+    public int getHomerBeard() {
+        return normalizeCharacteristic(homerBeard);
+    }
+
+    public int getHomerPants() {
+        return normalizeCharacteristic(homerPants);
+    }
+
+    public int getLisaDressAndMaggiePacifierAndMargeItems() {
+        return normalizeCharacteristic(lisaDressAndMaggiePacifierAndMargeItems);
+    }
+
+    public int getMaggiePijamas() {
+        return normalizeCharacteristic(maggiePijamas);
+    }
+
+    public int getMargeHair() {
+        return normalizeCharacteristic(margeHair);
+    }
+
+    public int getMargeDress() {
+        return normalizeCharacteristic(margeDress);
+    }
+
+    private int compare(Color gave, Color expected) {
+        int tolerance = 20;
+        Color base = new Color(gave.getRGB() - tolerance);
+        Color topo = new Color(gave.getRGB() + tolerance);
+        if (gave.getRGB() < base.getRGB()) {
+            return -1;
+        } else if (gave.getRGB() > topo.getRGB()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     @Override

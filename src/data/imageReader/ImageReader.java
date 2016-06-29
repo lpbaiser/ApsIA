@@ -6,7 +6,7 @@ import data.Conjunto;
 import data.Instancia;
 import data.Tipo;
 import image.Image;
-import image.extractionOfCharacteristics.ColorExtractor;
+import image.extractionOfCharacteristics.ColorDescriptor;
 import image.extractionOfCharacteristics.Extractor;
 import image.extractionOfCharacteristics.ShapeDescriptor;
 import java.io.BufferedReader;
@@ -27,7 +27,7 @@ public class ImageReader {
     public ImageReader() {
         this.extratores = new ArrayList<>();
 //        extratores.add(new ShapeDescriptor());
-        extratores.add(new ColorExtractor());
+        extratores.add(new ColorDescriptor());
     }
 
     public Conjunto parseFolder(String folder) {
@@ -64,7 +64,7 @@ public class ImageReader {
             for (Extractor extrator : extratores) {
                 extrator.setImage(image);
                 Tipo tipo = null;
-                if (extrator instanceof ColorExtractor) {
+                if (extrator instanceof ColorDescriptor) {
                     tipo = Tipo.COR;
                 } else if (extrator instanceof ShapeDescriptor) {
                     tipo = Tipo.PERIMETER_OF_BORDER;
