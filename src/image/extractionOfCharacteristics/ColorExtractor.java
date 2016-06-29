@@ -99,6 +99,19 @@ public class ColorExtractor implements Extractor<Color> {
         return normalizeCharacteristic(margeDress);
     }
 
+    private int compare(Color gave, Color expected) {
+        int tolerance = 20;
+        Color base = new Color(gave.getRGB() - tolerance);
+        Color topo = new Color(gave.getRGB() + tolerance);
+        if (gave.getRGB() < base.getRGB()) {
+            return -1;
+        } else if (gave.getRGB() > topo.getRGB()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     /**
      * Obtém a cor predominante desconsiderando a margem de erro implementada em
      * coloExtractorSimple.
@@ -109,7 +122,7 @@ public class ColorExtractor implements Extractor<Color> {
         if (image == null) {
             throw new RuntimeException("imagem nula");
         }
-        
+
         Integer quantity;
         HashMap<Color, Integer> colorHasCounter = new HashMap<>();
 
@@ -122,16 +135,18 @@ public class ColorExtractor implements Extractor<Color> {
         colorHasCounter.put(new Color(0, 66, 132), 0);//cabelo da Marge
         colorHasCounter.put(new Color(149, 189, 30), 0);//vestido da Marge
         //R 138 e 160; G 170 e 208; B 20 e 40
-        int tolerance = 20;
 
         for (Color[] line : image.getColors()) {
             for (Color color : line) {
-                quantity = colorHasCounter.get(color);
-                if (quantity == null) {
-                    quantity = 0;
+                for (Map.Entry<Color, Integer> entry : colorHasCounter.entrySet()) {
+                    if (compare(entry.getKey(), color) == 0) {
+                        quantity = colorHasCounter.get(color);
+                        if (quantity != null) {
+                            quantity++;
+                            colorHasCounter.put(color, quantity);
+                        }
+                    }
                 }
-                quantity++;
-                colorHasCounter.put(color, quantity);
             }
         }
         Map.Entry<Color, Integer> predominantColor = colorHasCounter.entrySet().iterator().next();
