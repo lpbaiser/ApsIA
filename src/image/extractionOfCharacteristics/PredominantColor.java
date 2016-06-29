@@ -21,7 +21,7 @@ import javax.imageio.ImageIO;
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class ColorDescriptor implements Extractor<Color> {
+public class PredominantColor implements Extractor<Color> {
 
     private Image image;
     private int bartShirt;
@@ -123,34 +123,7 @@ public class ColorDescriptor implements Extractor<Color> {
         return predominantColor.getKey();
     }
 
-    public int[] getHistogramColorGray() {
-        Color colors[][] = image.getColors();
-        int[] histogram = new int[256];
-
-        for (int i = 0; i < colors.length; i++) {
-            for (int j = 0; j < colors[i].length; j++) {
-                Color c = new Color(colors[i][j].getRGB());
-                int grayTone = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
-                histogram[grayTone]++;
-//                c = new Color(grayTone, grayTone, grayTone);
-//                colors[i][j] = c;
-            }
-        }
-//        BufferedImage bufferedImage = new BufferedImage(colors.length, colors[0].length, BufferedImage.TYPE_INT_RGB);
-//
-//        for (int x = 0; x < colors.length; x++) {
-//            for (int y = 0; y < colors[x].length; y++) {
-//                bufferedImage.setRGB(x, y, colors[x][y].getRGB());
-//            }
-//        }
-
-//        try {
-//            ImageIO.write(bufferedImage, "JPG", new File("/home/leonardo/Dropbox/IA/ApsIA/teste.jpg"));
-//        } catch (IOException ex) {
-//            Logger.getLogger(ColorDescriptor.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        return histogram;
-    }
+    
 
     public int getBartShirt() {
         return normalizeCharacteristic(bartShirt);
