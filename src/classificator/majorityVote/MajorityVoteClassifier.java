@@ -12,6 +12,8 @@ import data.Classe;
 import data.Conjunto;
 import data.Instancia;
 import dt.DecisionTree;
+import java.util.HashMap;
+import java.util.Map;
 import libsvm.svm;
 
 /**
@@ -23,6 +25,7 @@ public class MajorityVoteClassifier implements Classifier {
     private Conjunto treino;
     private Conjunto teste;
     private final Classifier knn;
+    private Confusao confusao;
     private svm svm;
     private DecisionTree decisionTree;
 
@@ -41,22 +44,51 @@ public class MajorityVoteClassifier implements Classifier {
     public void setConjuntoTeste(Conjunto conjunto) {
         this.teste = (Conjunto) conjunto.clone();
         this.knn.setConjuntoTeste(teste);
-
     }
 
     @Override
     public void classify() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Classe classifiedAs;
+        this.confusao = new Confusao(this.treino.getQuantidadeClasses(), this.teste.getQuantidadeInstancias());
+        for (Instancia instancia : teste) {
+            classifiedAs = classify(instancia);
+            confusao.registrarConfusao(instancia.getClasse(), classifiedAs);
+        }
     }
 
     @Override
     public Classe classify(Instancia instancia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap<Classe, Integer> classeHasVotos;
+        Classe classifierClassifyAs;
+        Classe classifiedAs;
+        Integer votes;
+        classeHasVotos = new HashMap<>();
+        votes = 0;
+
+        classifierClassifyAs = knn.classify(instancia);
+
+        votes = classeHasVotos.get(classifierClassifyAs);
+        votes++;
+        classeHasVotos.put(classifierClassifyAs, votes);
+
+        classifiedAs = getMajorityClasse(classeHasVotos);
+
+        return classifiedAs;
+    }
+
+    private Classe getMajorityClasse(HashMap<Classe, Integer> classeHasVotos) {
+        Map.Entry<Classe, Integer> majority = classeHasVotos.entrySet().iterator().next();
+        for (Map.Entry<Classe, Integer> entry : classeHasVotos.entrySet()) {
+            if (majority.getValue() < entry.getValue()) {
+                majority = entry;
+            }
+        }
+        return majority.getKey();
     }
 
     @Override
     public Confusao getMatrizConfusao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.confusao;
     }
 
 }

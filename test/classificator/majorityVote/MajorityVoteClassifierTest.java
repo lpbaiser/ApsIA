@@ -27,6 +27,8 @@ public class MajorityVoteClassifierTest {
         majorityVoteClassifier = new MajorityVoteClassifier(treino);
         Conjunto test = imageReader.parseFolder("/Valid/");
         majorityVoteClassifier.setConjuntoTeste(test);
+
+        majorityVoteClassifier.classify();
     }
 
 }
