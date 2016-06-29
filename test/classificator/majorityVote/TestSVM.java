@@ -5,7 +5,6 @@
  */
 package classificator.majorityVote;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,8 +12,6 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import libsvm.svm;
-import libsvm.svm_model;
-import libsvm.svm_problem;
 import org.junit.Test;
 
 /**
