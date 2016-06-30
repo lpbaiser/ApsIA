@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.6.26)  30 JUN 2016 14:34
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.6.26)  30 JUN 2016 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -800,49 +800,45 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 68.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 71.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 71.
+(babel)             in language  on input line 74.
 
 [1
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 73.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 79.
+(babel)             in language  on input line 83.
 
-Underfull \hbox (badness 1067) in paragraph at lines 81--82
+Underfull \hbox (badness 1067) in paragraph at lines 85--86
 \OT1/lmr/m/n/12 Dado as bi-bli-o-te-cas j^^Sa im-ple-men-ta-das, como men-ci-o-
 nado na se^^Xc~ao an-te-rior,
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 89.
-(./aps.bbl
+(babel)             in language  on input line 93.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 9.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 9.
- [2])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
+(babel)             in language  on input line 96.
+[2] (./aps.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 104.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 100.
+(babel)             in language  on input line 104.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 100.
+(babel)             in language  on input line 104.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
  (./aps.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 100.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 104.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 104.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 104.
  )
 (\end occurred inside a group at level 1)
 
@@ -851,10 +847,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
 Here is how much of TeX's memory you used:
  14736 strings out of 495638
  205587 string characters out of 6187352
- 335080 words of memory out of 5000000
+ 336080 words of memory out of 5000000
  17714 multiletter control sequences out of 15000+600000
  45576 words of font info for 57 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,8n,48p,832b,10395s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,48p,897b,10286s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on aps.pdf (3 pages).

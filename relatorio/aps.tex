@@ -67,11 +67,15 @@
 
 \section{Organização da Solução}\label{sec:solucao}
 
-	Para implementação da solução do problema a priori observou-se os conjuntos de treino e teste do problema proposto afim de encontrar características que maior definem e distinguem uma imagem de outra. Tomando-se um problema onde o conjunto de imagens expressam cores que melhor definem os personagens, nós optamos por extratores de características quem trabalham melhor com coloração de imagem, então dada a escolha dos extratores, definimos o primeiro o extrator de cores predominantes, cada imagem é iterada sobre sua matriz de cores e dela quantificamos as cores que aparecem e são condizentes com as cores presentes na vestimenta de cada personagem, ao final da iteração temos um \textit{hashmap} onde cada chave é a cor da roupa de um personagem e seu valor a quantidade de pixels presente na matriz.
+	Para implementação da solução do problema a priori observou-se os conjuntos de treino e teste do problema proposto afim de encontrar características que maior definem e distinguem uma imagem de outra. Tomando-se um problema onde o conjunto de imagens expressam cores que melhor definem os personagens, nós optamos por extratores de características quem trabalham melhor com coloração de imagem, então dada a escolha dos extratores, definimos o primeiro o extrator de cores predominantes, cada imagem é iterada sobre sua matriz de cores e dela quantificamos as cores que aparecem e são condizentes com as cores presentes na vestimenta de cada personagem, ao final da iteração temos um \textit{hashmap} onde cada chave é a cor da roupa de um personagem e seu valor a quantidade de \textit{pixels} presente na matriz, com este \textit{hashmap} pagamos a cor predominante.\\
+	O segundo extrator de característica é um descritor de contorno \textit{(shape descriptor)}, com este método extraímos o contorno de uma imagem, obtemos uma matriz binária onde 1 define o contorno, para podermos utilizar este resultado no classificador extraímos o perímetro do contorno. \\
+	O terceiro extrator de característica também é classificado com descritor de cor, com histogramas de imagens temos um vetor de variação de tons de cores, para utilização do histograma convertemos a imagem para tons de cinza, em alguns testes utilizamos o vetor normalizado.\\
+	No quarto extrator aplicou-se uma transforma de \textit{fourier}, neste extrator o vetor de valores gerado no histograma é enviado para a classe FFT do java que transforma este valores em números complexos, utilizamos este conjunto de números complexos para ... Escrever para que utilizamos!!!
 
 
 \subsection{Diagramação}\label{sec:diagramacao}
-
+	
+	
 
 
 
