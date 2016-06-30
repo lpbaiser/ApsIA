@@ -96,43 +96,10 @@
 
 
 
-\subsection{Diagramação}\label{sec:diagramacao}
-	
-	
-
-
-
-
-\section{Implementação}
-
-
-
-\section{Considerações Finais}
-
-
-Exemplo de referência CC01a ~\cite{CC01}.
-
-https://github.com/cjlin1/libsvm
-https://github.com/saebyn/java-decision-tree
-https://xanadu1010.wordpress.com/scripts-e-programas/transformada-rapida-de-fourier-com-java/
-
-\bibliography{references}{}
-\bibliographystyle{plain}
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{table}[]
+\subsection{Resultados}\label{sec:diagramacao}
+	\begin{table}[]
 \centering
-\caption{My caption}
+\caption{KNN, k=3, Normalizado}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -143,13 +110,12 @@ https://xanadu1010.wordpress.com/scripts-e-programas/transformada-rapida-de-four
 0  & 0 & 2  & 3 & 8 \\ \hline
 \end{tabular}
 \end{table}
-KNN com k = 3, conjuntos normalizados e 4 características
 
-
+	
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{KNN, todas características}
 \label{my-label}
 \begin{tabular}{|l|l|}
 \hline
@@ -161,11 +127,11 @@ K  & Accuracy \\ \hline
 21 & 45\%     \\ \hline
 \end{tabular}
 \end{table}
-4 características normalizadas, conjuntos normalizados
+
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax}
 \label{my-label}
 \begin{tabular}{|l|l|}
 \hline
@@ -186,8 +152,8 @@ Histograma + T. de Fourrier                                                     
 \begin{tabular}[c]{@{}l@{}}P. da Borda + Histograma\\ + Cor Predominante + T. de Fourrier\end{tabular} & 52\% \\ \hline
 \end{tabular}
 \end{table}
-KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax
-********
+
+
 
 
 
@@ -195,7 +161,7 @@ KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{Teste completo}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -206,14 +172,14 @@ KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax
 3  & 0 & 0  & 2 & 8 \\ \hline
 \end{tabular}
 \end{table}
-0.5789473684210527
+Accuracy = 0.5789473684210527.
 
 
 
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{Teste completo}
 \label{my-label}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -224,5 +190,39 @@ KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax
 3  & 0 & 0 & 0 & 10 \\ \hline
 \end{tabular}
 \end{table}
-0,6
+Accuracy = 0,6.
+
+
+
+
+\section{Implementação}
+
+
+
+\section{Considerações Finais}
+
+	Considera-se a respeito deste trabalho que identificar características das instâncias que possibilitem identificá-las é mais custoso (especialmente neste trabalho que possuía poucos padrões fixos), racionalmente falando, que encontrar um algoritmo que delinie-se bem ao problema, especialmente porque encontram-se muitas implementações de variados classificadores de código aberto disponíveis na internet.
+
+	Considera-se que o apesar da utilização de vários classificadores, o que mais contribui para a predição são as características utilizadas, de modo que quando não têm-se uma boa extração das características, não há muito o que fazer.
+
+	Assim, considera-se a suma importância de lidar com um problema real para ver-se em face as dificuldades da Inteligência Artificial como área.
+
+Exemplo de referência CC01a ~\cite{CC01}.
+
+https://github.com/cjlin1/libsvm
+https://github.com/saebyn/java-decision-tree
+https://xanadu1010.wordpress.com/scripts-e-programas/transformada-rapida-de-fourier-com-java/
+
+\bibliography{references}{}
+\bibliographystyle{plain}
+
+
+
 \end{document}	
+
+
+
+
+
+
+
