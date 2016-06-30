@@ -67,4 +67,8 @@ public class Caracteristica<T> {
         return new Caracteristica(this.valor, this.tipo);
     }
 
+    public Tipo getTipo() {
+        return tipo;
+    }
+
 }

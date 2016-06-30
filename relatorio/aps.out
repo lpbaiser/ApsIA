@@ -1,4 +1,10 @@
 \BOOKMARK [1][-]{section.1}{Introdução}{}% 1
 \BOOKMARK [1][-]{section.2}{O\040Problema}{}% 2
 \BOOKMARK [1][-]{section.3}{Organização da Solução}{}% 3
+<<<<<<< HEAD
 \BOOKMARK [1][-]{section.4}{Considerações Finais}{}% 4
+=======
+\BOOKMARK [2][-]{subsection.3.1}{Diagramação}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{Implementação}{}% 5
+\BOOKMARK [1][-]{section.5}{Considerações Finais}{}% 6
+>>>>>>> c162eba1dd80c7a1865616b6514203edd4500068

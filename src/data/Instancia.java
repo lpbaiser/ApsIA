@@ -59,12 +59,12 @@ public class Instancia implements Iterable<Caracteristica> {
 
             @Override
             public boolean hasNext() {
-                return this.index < caracteristicas.length;
+                return this.index < getCaracteristicas().length;
             }
 
             @Override
             public Caracteristica next() {
-                return caracteristicas[this.index++];
+                return getCaracteristicas()[this.index++];
             }
         };
     }
@@ -72,6 +72,10 @@ public class Instancia implements Iterable<Caracteristica> {
     @Override
     public Object clone() {
         return new Instancia(this.caracteristicas, this.classe);
+    }
+
+    public Caracteristica[] getCaracteristicas() {
+        return caracteristicas;
     }
 
 }

@@ -178,4 +178,53 @@ public final class Conjunto implements Iterable<Instancia> {
         arq.close();
     }
 
+    public void serializarWeka(String nomeArq) throws IOException {
+        FileWriter arq = new FileWriter(nomeArq);
+        PrintWriter gravarArq = new PrintWriter(arq);
+
+//        rgb  1 
+//        vet peri
+//        vet num compl
+//        vet flo
+        gravarArq.printf("@relation simps%n%n");
+        gravarArq.printf("@attribute results {0,1,2,3,4}%n");
+        for (Caracteristica carac : this.instancias[0].getCaracteristicas()) {
+            if (carac.getTipo() == Tipo.COR) {
+                gravarArq.printf("@attribute corR numeric\n"
+                        + "@attribute corG numeric\n"
+                        + "@attribute corB numeric\n");
+            } else if (carac.getTipo() == Tipo.FFT) {
+                for (int i = 0; i < 512; i++) {
+                    gravarArq.printf("@attribute fft%d numeric%n", i);
+                }
+            } else if (carac.getTipo() == Tipo.HISTOGRAM_GRAY_SCALE) {
+                for (int i = 0; i < 256; i++) {
+                    gravarArq.printf("@attribute histogram_gray_scale%d numeric%n", i);
+                }
+            } else if (carac.getTipo() == Tipo.PERIMETER_OF_BORDER) {
+                gravarArq.printf("@attribute pirimeterofborder numeric%n");
+
+            }
+
+        }
+        gravarArq.printf("%n@data%n%n");
+        int j;
+        for (Instancia instancia : instancias) {
+            j = 1;
+            gravarArq.printf("%d,", instancia.getClasse().toInt());
+            for (Caracteristica caracteristica : instancia) {
+                for (String string : caracteristica.toStringArray()) {
+                    j++;
+                    gravarArq.printf(string);
+                    if (j != 773) {
+                        gravarArq.printf(",");
+                    }
+                }
+            }
+            gravarArq.printf("%n");
+        }
+
+        arq.close();
+    }
+
 }
