@@ -7,7 +7,7 @@ package image;
 
 import data.Caracteristica;
 import data.Tipo;
-import image.extractionOfCharacteristics.ColorDescriptor;
+import image.extractionOfCharacteristics.PredominantColor;
 import image.extractionOfCharacteristics.Extractor;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -44,7 +44,7 @@ public class Image {
             case CONTRASTE:
                 break;
             case COR:
-                extractor = new ColorDescriptor();
+                extractor = new PredominantColor();
                 return new Caracteristica(extractor.getCharacteristic(), Tipo.COR);
             case HUG:
                 break;

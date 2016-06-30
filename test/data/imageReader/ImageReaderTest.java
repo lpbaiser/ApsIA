@@ -5,6 +5,8 @@
  */
 package data.imageReader;
 
+import data.Conjunto;
+import java.io.IOException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,9 +20,11 @@ public class ImageReaderTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testSomeMethod() throws IOException {
         ImageReader imageReader = new ImageReader();
-        imageReader.parseFolder("/Train/");
+        Conjunto parseFolder = imageReader.parseFolder("/Train/");
+        parseFolder.serializar("teeste");
+    
     }
     
 }

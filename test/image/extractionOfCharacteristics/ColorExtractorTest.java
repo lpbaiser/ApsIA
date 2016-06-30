@@ -13,7 +13,8 @@ public class ColorExtractorTest {
 
     InputStream inputStream = getClass().getResourceAsStream("/Train/bart001.bmp");
     Image image = new Image(inputStream);
-    ColorDescriptor colorExtractor = new ColorDescriptor();
+    PredominantColor colorExtractor = new PredominantColor();
+    HistogramColorGray histogramColorGray = new HistogramColorGray();
 
 //    @Test
     public void testColorExtractor() {
@@ -23,8 +24,10 @@ public class ColorExtractorTest {
 
     @Test
     public void getHistogramColorGray() {
-        colorExtractor.setImage(image);
-        System.out.println("Histogram: " + Arrays.toString(colorExtractor.getHistogramColorGray()));
+        histogramColorGray.setImage(image);
+        for (Float integer : histogramColorGray.getHistogramColorGray()) {
+            System.out.print(integer + " ");
+        }
     }
 
 }
