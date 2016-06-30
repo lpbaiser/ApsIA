@@ -112,8 +112,6 @@ public class PredominantColor implements Extractor<Color> {
         return predominantColor.getKey();
     }
 
-    
-
     public int getBartShirt() {
         return normalizeCharacteristic(bartShirt);
     }

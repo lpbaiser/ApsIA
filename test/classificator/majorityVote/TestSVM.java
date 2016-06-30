@@ -29,11 +29,11 @@ public class TestSVM {
         testFile = getClass().getResource("/classificator/majorityVote/arquivoTeste.SVM");
         predictFile = getClass().getResource("/classificator/majorityVote/resultado.predict");
 
-//        String[] argsScaleTeste = {testFile.getPath()};
-//        svm_scale.main(argsScaleTeste);
+        String[] argsScaleTeste = {testFile.getPath()};
+        svm_scale.main(argsScaleTeste);
         
-//        String[] argsScaleTreino = {trainFile.getPath()};
-//        svm_scale.main(argsScaleTreino);
+        String[] argsScaleTreino = {trainFile.getPath()};
+        svm_scale.main(argsScaleTreino);
         
         String[] argsTrainKernel1 = {"-s", "1", "-b", "1", trainFile.getPath(), modelFile.getPath()};
         svm_train.main(argsTrainKernel1);

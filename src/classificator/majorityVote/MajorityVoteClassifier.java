@@ -36,7 +36,7 @@ public class MajorityVoteClassifier implements Classifier {
     public MajorityVoteClassifier(Conjunto treino) {
         this.treino = (Conjunto) treino.clone();
         try {
-            this.knn = new KNN(3, treino);
+            this.knn = new KNN(3, treino, 100, true);
 
             URL trainFile = getClass().getResource("arquivoTreino.SVM");
             URL modelFile = getClass().getResource("arquivoTreino.SVM.model");

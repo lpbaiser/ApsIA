@@ -12,7 +12,6 @@ import data.Instancia;
 import data.Conjunto;
 import data.Classe;
 import data.Caracteristica;
-import data.Tipo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
