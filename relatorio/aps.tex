@@ -32,7 +32,7 @@
 
 \sloppy
 
-\title{Classificando imagens dos Simpsons}
+\title{Predição de imagens da família ``Os Simpsons"}
 
 \author{Leonardo Pontes Baiser\inst{1}, Marco Cezar Moreira de Mattos\inst{1},\\
 		Rômulo Manciola Meloca\inst{1}}
@@ -48,9 +48,9 @@
 
 \begin{abstract}
 
-	This report shows the process of developing a program whose goal is to apply on the basis of images the 	concepts of artificial intelligence seen in the classroom along with the concepts of literature, therefore discriminate five classes referring to characters in the TV series \ textit {Simpsons}, these classes extract features and starting these characteristics apply sorting algorithms.
+	This report shows the process of developing a program whose goal is to apply on the basis of images the concepts of artificial intelligence seen in the classroom along with the concepts of literature, therefore discriminate five classes referring to characters in the TV series \textit{Simpsons}, these classes extract features and starting these characteristics apply sorting algorithms.
 
-	\end{abstract}
+\end{abstract}
      
 \begin{resumo} 
   Este relatório mostra o processo de desenvolvimento de um programa cujo objetivo é aplicar sobre uma base de imagens os conceitos de inteligência artificial vistos em sala de aula juntamente com os conceitos da literatura, para tanto discriminamos cinco classes referentes aos personagens do seriado de TV \textit{Simpsons}, nestas classes extraímos características e apartir destas características aplicamos algoritmos de classificação.	
@@ -58,15 +58,15 @@
 
 \section{Introdução}\label{sec:introducao}
 
+	Muito se discute, sobre o tema ``Inteligência artificial" e a utilização desta área para solucionar os inúmeros problemas existentes no mundo atual, embora a humanidade ainda engatinhe no desenvolvimento de soluções, alguns sistemas inteligentes já praticam o que chamamos de inteligência artificial, como é o casos de reconhecedores de padrões utilizando-se de imagens.
 
-	O aprendizado humano se dá através de três formas.
-	Para a computação, não há outra forma de adquirir conhecimento, no sentido de conhecer determinadas informações, senão a aprendizagem.
+	Podemos ``ensinar" um computador através de três maneiras, à moda dos seres humanos. São elas: O aprendizado supervisionado, o aprendizado não-supervisionado e o aprendizado por reforço. A saber, o aprendizado não supevisionado é aquele em que o computador precisa extrair informações que julgue relevantes sem qualquer apoio ou regra informada; Obviamente este é o modelo de aprendizagem que mais se busca. O aprendizado por reforço também exige do computador extrair conhecimento de um amontoado de informações, encontrando conexões a respeito dos dados analisados, contando ainda com uma bonificação a cada resposta certa e uma reclamação a cada resposta incorreta; À moda dos que recebem gorjeta. Há ainda, o aprendizado não-supervisionado, que fornece ao computador um conjunto de treinamento para que este aprenda a classificar itens já sabendo da real resposta de cada um destes e só em seguida seja lançado ao mundo para predizer itens não conhecidos.
 
-	Podemos ``ensinar" um computador através de três maneiras, à moda dos seres humanos. São elas: O aprendizado supervisionado, o aprendizado não-supervisionado e o aprendizado por reforço. Em qualquer uma dessas três modalidades não há o aprendizado por..
-	A saber, o aprendizado não supevisionado é aquele em que o computador precisa extrair informações que julgue relevantes sem qualquer apoio ou regra informada; Obviamente este é o modelo de aprendizagem que mais se busca. O aprendizado por reforço também exige do computador extrair conhecimento de um amontoado de informações, encontrando conexões a respeito dos dados analisados, contando ainda com uma bonificação a cada resposta certa e uma reclamação a cada resposta incorreta; À moda dos que recebem gorjeta. Há ainda, o aprendizado não-supervisionado, que fornece ao computador um conjunto de treinamento para que este aprenda a classificar itens já sabendo da real resposta de cada um destes e só em seguida seja lançado ao mundo para predizer itens não conhecidos.
+	Para formar um conjunto sobre o qual os classificadores poderão operar, deve-se criar uma matriz relacionando as instâncias com as características, ou seja, cada instância (elemento que deseja-se classificar) possui um rol de características, sejam elas numéricas ou não-numéricas, que a define enquanto classe.
+
+	De longe, esta é, portanto, a principal parte do problema: Escolher bem as características para que elas definam bem a instância, de modo que um classificador possa encontrar semelhança esta e outra classe a fim de predizê-lo.
 
 	Para este trabalho, tratamos desta última categoria de classificadores. Neste, foi dado um problema que demandava escolher características de cada instância e classificá-las. A seção que segue, encarrega-se de elucidar o problema.
-
 
 \section{O Problema}\label{sec:problema}
 
@@ -74,17 +74,11 @@
 
 	Cabia ao escopo deste trabalho escolher características para serem extraídas destas instâncias, bem como escolher os classificadores de aprendizagem não-supervisionada para operarem sobre os conjuntos.
 
-	Como exaustivamente discutido por ***, mais importa a boa escolha de características que o algoritmo de classificação empregado, pois uma vez que as características não delimitam bem as classes, não há comparação que permita distinguí-las. Sob esse aspecto, consistia nisto a maior dificuldade do trabalho: extrair características das imagens dos personagens que fossem relevantes para distinguí-los.
+	Como exaustivamente discutido, mais importa a boa escolha de características que o algoritmo de classificação empregado, pois uma vez que as características não delimitam bem as classes, não há comparação que permita distinguí-las. Sob esse aspecto, consistia nisto a maior dificuldade do trabalho: extrair características das imagens dos personagens que fossem relevantes para distinguí-los.
 
-	Aos olhos humanos distinguir os personagens da famílias ``Simpsons" é muito fácil, todavia, obter características que descrevam Sendo os personagens muito semelhantes, em termos de cor, encontrou-se grande dificuldade em.
+	Aos olhos humanos distinguir os personagens da famílias ``Simpsons" é muito fácil, todavia, obter características que os descrevam computacionalmente, uma vez que os personagens são muito semelhantes, em termos de cor, além da insconstância da localização dos pixels (isto é, localização dos personagens na imagem), encontrou-se grande dificuldade em fazê-lo.
 
-	Muito se discute, sobre o tema ``Inteligência artificial" e a utilização desta área para solucionar os inúmeros problemas existentes no mundo atual, embora a humanidade ainda engatinhe no desenvolvimento de soluções, alguns sistemas inteligentes já praticam o que chamamos de inteligência artificial, como é o casos de reconhecedores de padrões utilizando-se de imagens.
-
-\section{O Problema}\label{sec:problema}
-
-	Dado uma imagem de um banco de imagens dos Simpsons deseja-se saber qual é o personagem presente em cada imagem do conjunto de imagens, para tanto deve-se utilizar de extratores de características específicos para imagens, assim gerando conjuntos de características que a posteriori serão classificados utilizando classificadores do tipo K-NN (k-nearest neighbors), SVM (support vector machine) e DT (decision tree).
-
-
+	Para extrair as características da imagem, utilizou-se: A predominância de cores, (adotando uma tolerância para mais ou para menos) orientando a busca pelas cores que caracterizam os personagens; O perímetro da borda; O Histograma horizontal normalizado de cada imagem em escala de cinza; E a Transformação Rápida de Fourier obtendo como entrada o histograma. Gerando conjuntos de características que a posteriori serão classificados utilizando classificadores do tipo K-NN (k-nearest neighbors) utilizando distância euclidiana, SVM (support vector machine) com kernel linear e sigmoidal e DT (decision tree) discreta binária.
 
 \section{Organização da Solução}\label{sec:solucao}
 
