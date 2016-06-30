@@ -39,6 +39,8 @@ public class MajorityVoteClassifierTest {
             }
             System.out.println();
         }
+        
+        System.out.println(matrizConfusao.getAccuracy());
     }
 
 }

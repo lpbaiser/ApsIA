@@ -117,7 +117,7 @@ public final class Conjunto implements Iterable<Instancia> {
     }
 
     public int getQuantidadeClasses() {
-        return this.classes.size() + 1;
+        return this.classes.size();
     }
 
     public void print() {

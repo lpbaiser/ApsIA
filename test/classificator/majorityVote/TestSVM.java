@@ -5,11 +5,13 @@
  */
 package classificator.majorityVote;
 
+import classificator.svm.svm_predict;
+import classificator.svm.svm_scale;
 import classificator.svm.svm_train;
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -21,17 +23,24 @@ import org.junit.Test;
 public class TestSVM {
 
     @Test
-    public void testSVM() {
-        //        <label>  < index1 >:<value1 > <index2>:<value2 > ...
-        try {
-            InputStream inputStream = getClass().getResourceAsStream("/classificator/majorityVote/arquivoTreino.SVM");
-            InputStreamReader insInputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(insInputStreamReader);
-            String[] args = {"/data/documents/workspace/ApsIA/test/classificator/majorityVote/arquivoTreino.SVM"};
-            svm_train.main(args);
-            
-        } catch (IOException ex) {
-            Logger.getLogger(MajorityVoteClassifierTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void testSVM() throws Exception {
+        URL trainFile;
+        URL modelFile;
+        URL testFile;
+        URL predictFile;
+
+        trainFile = getClass().getResource("/classificator/majorityVote/arquivoTreino.SVM");
+        modelFile = getClass().getResource("/classificator/majorityVote/arquivoTreino.SVM.model");
+        testFile = getClass().getResource("/classificator/majorityVote/arquivoTeste.SVM");
+        predictFile = getClass().getResource("/classificator/majorityVote/resultado.predict");
+
+        String[] argsTrain = {"-s", "1", "-b", "1", "-c", "10", "-g", "16", trainFile.getPath(), modelFile.getPath()};
+        svm_train.main(argsTrain);
+
+        String[] argsScale = {trainFile.getPath()};
+        svm_scale.main(argsScale);
+
+        String[] argsPredict = {"-b", "1", testFile.getPath(), modelFile.getPath(), "resultado.predict"};
+        svm_predict.main(argsPredict);
     }
 }
