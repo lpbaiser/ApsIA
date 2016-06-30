@@ -8,6 +8,8 @@ import data.Tipo;
 import image.Image;
 import image.extractionOfCharacteristics.PredominantColor;
 import image.extractionOfCharacteristics.Extractor;
+import image.extractionOfCharacteristics.Fourier;
+import image.extractionOfCharacteristics.HistogramColorGray;
 import image.extractionOfCharacteristics.ShapeDescriptor;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -26,8 +28,9 @@ public class ImageReader {
 
     public ImageReader() {
         this.extratores = new ArrayList<>();
-//        extratores.add(new ShapeDescriptor());
+        extratores.add(new ShapeDescriptor());
         extratores.add(new PredominantColor());
+        extratores.add(new HistogramColorGray());
     }
 
     public Conjunto parseFolder(String folder) {
@@ -68,6 +71,10 @@ public class ImageReader {
                     tipo = Tipo.COR;
                 } else if (extrator instanceof ShapeDescriptor) {
                     tipo = Tipo.PERIMETER_OF_BORDER;
+                } else if (extrator instanceof HistogramColorGray) {
+                    tipo = Tipo.HISTOGRAM_GRAY_SCALE;
+                } else if (extrator instanceof Fourier) {
+                    tipo = Tipo.FFT;
                 }
                 caracteristicas.add(new Caracteristica(extrator.getCharacteristic(), tipo));
             }

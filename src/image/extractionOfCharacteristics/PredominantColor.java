@@ -2,20 +2,10 @@ package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
-import java.awt.color.ColorSpace;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ColorConvertOp;
-import java.awt.image.RenderedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -99,7 +89,6 @@ public class PredominantColor implements Extractor<Color> {
         colorHasCounter.put(new Color(0, 156, 222), 0);//vestido da Maggie
         colorHasCounter.put(new Color(0, 66, 132), 0);//cabelo da Marge
         colorHasCounter.put(new Color(149, 189, 30), 0);//vestido da Marge
-        //R 138 e 160; G 170 e 208; B 20 e 40
 
         for (Color[] line : image.getColors()) {
             for (Color color : line) {

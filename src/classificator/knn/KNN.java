@@ -19,7 +19,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -98,7 +97,7 @@ public class KNN implements Classifier {
 
                 caracteristicas = new Caracteristica[strCaracteristicas.length - 1];
                 for (int i = 0; i < strCaracteristicas.length - 1; i++) {
-                    caracteristicas[i] = new Caracteristica(Double.parseDouble(strCaracteristicas[i]), Tipo.CONTRASTE);
+                    caracteristicas[i] = new Caracteristica(Double.parseDouble(strCaracteristicas[i]), null);
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.BART));
             }

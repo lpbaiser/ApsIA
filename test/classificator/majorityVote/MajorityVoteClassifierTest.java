@@ -5,9 +5,11 @@
  */
 package classificator.majorityVote;
 
+import JFFT.FFT;
 import classificator.Confusao;
 import data.Conjunto;
 import data.imageReader.ImageReader;
+import edu.emory.mathcs.jtransforms.fft.DoubleFFT_2D;
 import org.junit.Test;
 
 /**
@@ -30,7 +32,7 @@ public class MajorityVoteClassifierTest {
         majorityVoteClassifier.setConjuntoTeste(test);
 
         majorityVoteClassifier.classify();
-
+        
         Confusao matrizConfusao = majorityVoteClassifier.getMatrizConfusao();
 
         for (int[] is : matrizConfusao.getMatrizConfusao()) {

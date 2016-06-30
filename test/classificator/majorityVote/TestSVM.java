@@ -8,12 +8,7 @@ package classificator.majorityVote;
 import classificator.svm.svm_predict;
 import classificator.svm.svm_scale;
 import classificator.svm.svm_train;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
@@ -34,13 +29,22 @@ public class TestSVM {
         testFile = getClass().getResource("/classificator/majorityVote/arquivoTeste.SVM");
         predictFile = getClass().getResource("/classificator/majorityVote/resultado.predict");
 
-        String[] argsTrain = {"-s", "1", "-b", "1", "-c", "10", "-g", "16", trainFile.getPath(), modelFile.getPath()};
-        svm_train.main(argsTrain);
-
-        String[] argsScale = {trainFile.getPath()};
-        svm_scale.main(argsScale);
-
-        String[] argsPredict = {"-b", "1", testFile.getPath(), modelFile.getPath(), "resultado.predict"};
-        svm_predict.main(argsPredict);
+//        String[] argsScaleTeste = {testFile.getPath()};
+//        svm_scale.main(argsScaleTeste);
+        
+//        String[] argsScaleTreino = {trainFile.getPath()};
+//        svm_scale.main(argsScaleTreino);
+        
+        String[] argsTrainKernel1 = {"-s", "1", "-b", "1", trainFile.getPath(), modelFile.getPath()};
+        svm_train.main(argsTrainKernel1);
+//
+//            String[] argsTrainKernel2 = {"-s", "1", "-b", "2", "-c", "10", "-g", "16", trainFile.getPath(), modelFile.getPath()};
+//            svm_train.main(argsTrainKernel2);
+//
+//        String[] argsPredictKernel1 = {"-b", "1", testFile.getPath(), modelFile.getPath(), "resultado.predict"};
+//        svm_predict.main(argsPredictKernel1);
+//        
+//        String[] argsPredictKernel2 = {"-b", "2", testFile.getPath(), modelFile.getPath(), "resultado.predict"};
+//        svm_predict.main(argsPredictKernel2);
     }
 }

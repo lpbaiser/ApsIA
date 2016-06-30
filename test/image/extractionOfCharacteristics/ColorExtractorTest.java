@@ -2,7 +2,6 @@ package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.io.InputStream;
-import java.util.Arrays;
 import org.junit.Test;
 
 /**
@@ -16,7 +15,7 @@ public class ColorExtractorTest {
     PredominantColor colorExtractor = new PredominantColor();
     HistogramColorGray histogramColorGray = new HistogramColorGray();
 
-//    @Test
+    @Test
     public void testColorExtractor() {
         colorExtractor.setImage(image);
         colorExtractor.getCharacteristic();
@@ -25,7 +24,7 @@ public class ColorExtractorTest {
     @Test
     public void getHistogramColorGray() {
         histogramColorGray.setImage(image);
-        for (Float integer : histogramColorGray.getHistogramColorGray()) {
+        for (Float integer : histogramColorGray.getCharacteristic()) {
             System.out.print(integer + " ");
         }
     }

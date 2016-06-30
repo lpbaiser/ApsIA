@@ -2,40 +2,34 @@ package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Leonardo Baiser <lpbaiser@gmail.com>
  */
-public class HistogramColorGray implements Extractor<Color> {
+public class HistogramColorGray implements Extractor<float[]> {
 
     private Image image;
 
-    public List<Float> getHistogramColorGray() {
+    private float[] getHistogramColorGray() {
         Color colors[][] = image.getColors();
-        Integer[] histogram = new Integer[256];
-        for (int i = 0; i < histogram.length; i++) {
-            histogram[i] = 0;
-        }
+        int[] histogram = new int[256];
 
-        for (int i = 0; i < colors.length; i++) {
-            for (int j = 0; j < colors[i].length; j++) {
-                Color c = new Color(colors[i][j].getRGB());
+        for (Color[] color : colors) {
+            for (Color c : color) {
                 int grayTone = (c.getRed() + c.getGreen() + c.getBlue()) / 3;
                 histogram[grayTone]++;
             }
         }
-        return normalizeHistogram(histogram, colors.length*colors[0].length);
-//return histogram;
+        return normalizeHistogram(histogram, colors.length * colors[0].length);
     }
 
-    private List<Float> normalizeHistogram(Integer[] histogram, float matrixColorSize) {
-        List<Float> normalizeHistogram = new ArrayList<>();
-        for (Integer integer : histogram) {
-            float normal = integer / matrixColorSize;
-            normalizeHistogram.add(normal);
+    private float[] normalizeHistogram(int[] histogram, float matrixColorSize) {
+        float[] normalizeHistogram = new float[256];
+        for (int i = 0; i < normalizeHistogram.length; i++) {
+            float normal = histogram[i] / matrixColorSize;
+            normalizeHistogram[i] = normal;
+
         }
         return normalizeHistogram;
     }
@@ -45,16 +39,9 @@ public class HistogramColorGray implements Extractor<Color> {
         this.image = image;
     }
 
-    
-    
-//    @Override
-//    public List<Integer> getCharacteristic() {
-//        return getHistogramColorGray();
-//    }
-
     @Override
-    public Color getCharacteristic() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float[] getCharacteristic() {
+        return getHistogramColorGray();
     }
 
 }

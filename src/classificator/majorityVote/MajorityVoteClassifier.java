@@ -8,12 +8,18 @@ package classificator.majorityVote;
 import classificator.Classifier;
 import classificator.Confusao;
 import classificator.knn.KNN;
+import classificator.svm.svm_predict;
+import classificator.svm.svm_train;
 import data.Classe;
 import data.Conjunto;
 import data.Instancia;
 import dt.DecisionTree;
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,22 +37,50 @@ public class MajorityVoteClassifier implements Classifier {
         this.treino = (Conjunto) treino.clone();
         try {
             this.knn = new KNN(3, treino);
+
+            URL trainFile = getClass().getResource("arquivoTreino.SVM");
+            URL modelFile = getClass().getResource("arquivoTreino.SVM.model");
+
+            treino.serializar(trainFile.getPath());
+
+            String[] argsTrain = {"-s", "1", "-b", "1", "-c", "10", "-g", "16", trainFile.getPath(), modelFile.getPath()};
+            svm_train.main(argsTrain);
         } catch (Exception ex) {
-            throw new RuntimeException("Impossível inicializar jogador");
+            throw new RuntimeException("Impossível inicializar classificador");
         }
         decisionTree = new DecisionTree();
     }
 
     @Override
     public void setConjuntoTeste(Conjunto conjunto) {
-        this.teste = (Conjunto) conjunto.clone();
-        this.knn.setConjuntoTeste(teste);
+        try {
+            this.teste = (Conjunto) conjunto.clone();
+            this.knn.setConjuntoTeste(teste);
+
+            URL testFile = getClass().getResource("arquivoTeste.SVM");
+            this.teste.serializar(testFile.getPath());
+        } catch (IOException ex) {
+            Logger.getLogger(MajorityVoteClassifier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
     public void classify() {
         Classe classifiedAs;
         this.confusao = new Confusao(this.treino.getQuantidadeClasses(), this.teste.getQuantidadeInstancias());
+        
+        URL modelFile = getClass().getResource("arquivoTreino.SVM.model");
+        URL testFile = getClass().getResource("arquivoTest.SVM");
+        URL predictFile = getClass().getResource("resultado.predict");
+        
+        try {
+            String[] argsPredict = {"-b", "1", testFile.getPath(), modelFile.getPath(), predictFile.getPath()};
+            svm_predict.main(argsPredict);
+        } catch (IOException ex) {
+            Logger.getLogger(MajorityVoteClassifier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         for (Instancia instancia : teste) {
             classifiedAs = classify(instancia);
             confusao.registrarConfusao(instancia.getClasse(), classifiedAs);

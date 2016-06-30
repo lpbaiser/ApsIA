@@ -5,10 +5,6 @@
  */
 package image;
 
-import data.Caracteristica;
-import data.Tipo;
-import image.extractionOfCharacteristics.PredominantColor;
-import image.extractionOfCharacteristics.Extractor;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -36,22 +32,6 @@ public class Image {
         } catch (IOException ex) {
             throw new RuntimeException("Falha ao ler imagem");
         }
-    }
-
-    public Caracteristica extrairCaracteristica(Tipo tipo) {
-        Extractor extractor;
-        switch (tipo) {
-            case CONTRASTE:
-                break;
-            case COR:
-                extractor = new PredominantColor();
-                return new Caracteristica(extractor.getCharacteristic(), Tipo.COR);
-            case HUG:
-                break;
-            default:
-                return null;
-        }
-        throw new UnsupportedOperationException();
     }
 
     public Color[][] getColors() {

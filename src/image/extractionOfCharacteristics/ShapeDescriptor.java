@@ -2,7 +2,6 @@ package image.extractionOfCharacteristics;
 
 import image.Image;
 import java.awt.Color;
-import java.io.InputStream;
 
 /**
  *

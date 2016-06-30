@@ -5,7 +5,10 @@
  */
 package data;
 
+import JFFT.NumComplex;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,14 +24,30 @@ public class Caracteristica<T> {
         this.tipo = tipo;
     }
 
-    @Override
-    public String toString() {
+    public String[] toStringArray() {
+        List<String> componentes = new ArrayList<>();
         if (valor instanceof Color) {
             Color c = (Color) valor;
-            return "" + c.getRGB();
+            componentes.add(String.valueOf(c.getRed()));
+            componentes.add(String.valueOf(c.getGreen()));
+            componentes.add(String.valueOf(c.getBlue()));
+        } else if (valor instanceof Integer) {
+            componentes.add(String.valueOf(valor));
+        } else if (valor instanceof float[]) {
+            float[] caracteristicas = (float[]) valor;
+            for (float caracteristica : caracteristicas) {
+                componentes.add(String.valueOf(caracteristica));
+            }
+        } else if (valor instanceof NumComplex[]) {
+            NumComplex[] caracteristicas = (NumComplex[]) valor;
+            for (NumComplex caracteristica : caracteristicas) {
+                componentes.add(String.valueOf(caracteristica.getImaginario()));
+                componentes.add(String.valueOf(caracteristica.getReal()));
+            }
         } else {
             throw new RuntimeException("Método não suporta a classe");
         }
+        return componentes.toArray(new String[componentes.size()]);
     }
 
     public T getValor() {

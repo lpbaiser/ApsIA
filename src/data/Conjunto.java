@@ -159,19 +159,20 @@ public final class Conjunto implements Iterable<Instancia> {
     }
 
     public void serializar(String nomeArq) throws IOException {
-        FileWriter arq = new FileWriter(nomeArq+".SVM");
+        FileWriter arq = new FileWriter(nomeArq);
         PrintWriter gravarArq = new PrintWriter(arq);
 
-        int j, i = 1;
-        for (Instancia instacia : instancias) {
+        int j;
+        for (Instancia instancia : instancias) {
             j = 1;
-            gravarArq.printf("%d ", i);
-            for (Caracteristica caracteristica : instacia) {
-                gravarArq.printf(" %d:%s", j, caracteristica.toString());
-                j++;
+            gravarArq.printf("%d ", instancia.getClasse().toInt());
+            for (Caracteristica caracteristica : instancia) {
+                for (String string : caracteristica.toStringArray()) {
+                    gravarArq.printf(" %d:%s", j, string);
+                    j++;
+                }
             }
             gravarArq.printf("%n");
-            i++;
         }
 
         arq.close();
