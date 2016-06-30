@@ -21,18 +21,15 @@ public class HistogramColorGray implements Extractor<float[]> {
                 histogram[grayTone]++;
             }
         }
-        return histogram;
-//        return normalizeHistogram(histogram, colors.length * colors[0].length);
+        return normalizeHistogram(histogram, colors.length * colors[0].length);
     }
 
-    private float[] normalizeHistogram(int[] histogram, float matrixColorSize) {
-        float[] normalizeHistogram = new float[256];
-        for (int i = 0; i < normalizeHistogram.length; i++) {
+    private float[] normalizeHistogram(float[] histogram, float matrixColorSize) {
+        for (int i = 0; i < histogram.length; i++) {
             float normal = histogram[i] / matrixColorSize;
-            normalizeHistogram[i] = normal;
-
+            histogram[i] = normal;
         }
-        return normalizeHistogram;
+        return histogram;
     }
 
     @Override

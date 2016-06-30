@@ -27,17 +27,17 @@ public class SVM implements Classifier {
     private final URL predictFile;
 
     public SVM(Conjunto treino, int kernel) throws IOException {
-        this.trainFile = getClass().getResource("arquivoTreino.SVM");
-        this.modelFile = getClass().getResource("arquivoTreino.SVM.model");
-        this.testFile = getClass().getResource("arquivoTest.SVM");
-        this.predictFile = getClass().getResource("resultado.predict");
-        
+        this.trainFile = getClass().getResource("/classificator/svm/arquivoTreino.SVM");
+        this.modelFile = getClass().getResource("/classificator/svm/arquivoTreino.SVM.model" + kernel);
+        this.testFile = getClass().getResource("/classificator/svm/arquivoTest.SVM");
+        this.predictFile = getClass().getResource("/classificator/svm/resultado.predict" + kernel);
+
         treino.serializar(trainFile.getPath());
 
         String[] argsScaleTreino = {trainFile.getPath()};
         svm_scale.main(argsScaleTreino);
 
-        String[] argsTrain = {"-s", "1", "-b", String.valueOf(kernel), trainFile.getPath(), modelFile.getPath()};
+        String[] argsTrain = {"-s", "0", "-b", "1", "-t", String.valueOf(kernel), trainFile.getPath(), modelFile.getPath()};
         svm_train.main(argsTrain);
     }
 

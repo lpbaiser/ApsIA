@@ -9,18 +9,12 @@ import classificator.Classifier;
 import classificator.Confusao;
 import classificator.knn.KNN;
 import classificator.svm.SVM;
-import classificator.svm.svm_predict;
-import classificator.svm.svm_train;
 import data.Classe;
 import data.Conjunto;
 import data.Instancia;
 import dt.DecisionTree;
-import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -33,13 +27,15 @@ public class MajorityVoteClassifier implements Classifier {
     private final Classifier knn;
     private Confusao confusao;
     private DecisionTree decisionTree;
-    private SVM svm;
+    private SVM svmKernel0;
+    private SVM svmKernel3;
 
     public MajorityVoteClassifier(Conjunto treino) {
         this.treino = (Conjunto) treino.clone();
         try {
             this.knn = new KNN(3, treino, 100, true);
-//            this.svm = new SVM(treino, 1);
+            this.svmKernel0 = new SVM(treino, 0);
+            this.svmKernel3 = new SVM(treino, 3);
             this.decisionTree = new DecisionTree();
         } catch (Exception ex) {
             throw new RuntimeException("Impossível inicializar classificador");
@@ -50,11 +46,14 @@ public class MajorityVoteClassifier implements Classifier {
     public void setConjuntoTeste(Conjunto conjunto) {
         this.teste = (Conjunto) conjunto.clone();
         this.knn.setConjuntoTeste(teste);
-//        this.svm.setConjuntoTeste(teste);
+        this.svmKernel0.setConjuntoTeste(teste);
+        this.svmKernel3.setConjuntoTeste(teste);
     }
 
     @Override
     public void classify() {
+        this.svmKernel0.classify();
+        this.svmKernel3.classify();
         Classe classifiedAs;
         this.confusao = new Confusao(this.treino.getQuantidadeClasses(), this.teste.getQuantidadeInstancias());
 

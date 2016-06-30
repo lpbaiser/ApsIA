@@ -146,8 +146,8 @@ public class PredominantColor implements Extractor<Color> {
 
     private int compare(Color gave, Color expected) {
         int tolerance = 20;
-        Color base = new Color(gave.getRGB() - tolerance);
-        Color topo = new Color(gave.getRGB() + tolerance);
+        Color base = new Color(expected.getRGB() - tolerance);
+        Color topo = new Color(expected.getRGB() + tolerance);
         if (gave.getRGB() < base.getRGB()) {
             return -1;
         } else if (gave.getRGB() > topo.getRGB()) {
