@@ -5,11 +5,9 @@
  */
 package classificator.majorityVote;
 
-import JFFT.FFT;
 import classificator.Confusao;
 import data.Conjunto;
 import data.imageReader.ImageReader;
-import edu.emory.mathcs.jtransforms.fft.DoubleFFT_2D;
 import org.junit.Test;
 
 /**

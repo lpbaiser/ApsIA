@@ -5,6 +5,7 @@
  */
 package classificator;
 
+import JFFT.NumComplex;
 import data.Caracteristica;
 import data.Instancia;
 import java.awt.Color;
@@ -59,11 +60,35 @@ public class Distancia implements Comparable<Distancia> {
             if (caracteristicaA.getClass().isPrimitive() && caracteristicaB.getClass().isPrimitive()) {
                 valorA = (Double) caracteristicaA.getValor();
                 valorB = (Double) caracteristicaB.getValor();
+                sum += Math.pow(valorA - valorB, 2);
+            } else if (caracteristicaA.getValor() instanceof Integer && caracteristicaB.getValor() instanceof Integer) {
+                valorA = (Integer) caracteristicaA.getValor();
+                valorB = (Integer) caracteristicaB.getValor();
+                sum += Math.pow(valorA - valorB, 2);
             } else if (caracteristicaA.getValor() instanceof Color && caracteristicaB.getValor() instanceof Color) {
                 valorA = ((Color) caracteristicaA.getValor()).getRGB();
                 valorB = ((Color) caracteristicaB.getValor()).getRGB();
+                sum += Math.pow(valorA - valorB, 2);
+            } else if (caracteristicaA.getValor() instanceof float[] && caracteristicaB.getValor() instanceof float[]) {
+                float[] caracteristicasA = (float[]) caracteristicaA.getValor();
+                float[] caracteristicasB = (float[]) caracteristicaB.getValor();
+                for (int i = 0; i < caracteristicasA.length && i < caracteristicasB.length; i++) {
+                    valorA = caracteristicasA[i];
+                    valorB = caracteristicasB[i];
+                    sum += Math.pow(valorA - valorB, 2);
+                }
+            } else if (caracteristicaA.getValor() instanceof NumComplex[] && caracteristicaB.getValor() instanceof NumComplex[]) {
+                NumComplex[] caracteristicasA = (NumComplex[]) caracteristicaA.getValor();
+                NumComplex[] caracteristicasB = (NumComplex[]) caracteristicaB.getValor();
+                for (int i = 0; i < caracteristicasA.length && i < caracteristicasB.length; i++) {
+                    valorA = caracteristicasA[i].i;
+                    valorB = caracteristicasB[i].i;
+                    sum += Math.pow(valorA - valorB, 2);
+                    valorA = caracteristicasA[i].r;
+                    valorB = caracteristicasB[i].r;
+                    sum += Math.pow(valorA - valorB, 2);
+                }
             }
-            sum += Math.pow(valorA - valorB, 2);
         }
         setDistance(Math.sqrt(sum));
     }

@@ -13,7 +13,7 @@ public class HistogramColorGray implements Extractor<float[]> {
 
     private float[] getHistogramColorGray() {
         Color colors[][] = image.getColors();
-        int[] histogram = new int[256];
+        float[] histogram = new float[256];
 
         for (Color[] color : colors) {
             for (Color c : color) {
@@ -21,7 +21,8 @@ public class HistogramColorGray implements Extractor<float[]> {
                 histogram[grayTone]++;
             }
         }
-        return normalizeHistogram(histogram, colors.length * colors[0].length);
+        return histogram;
+//        return normalizeHistogram(histogram, colors.length * colors[0].length);
     }
 
     private float[] normalizeHistogram(int[] histogram, float matrixColorSize) {

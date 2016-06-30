@@ -23,7 +23,6 @@ public class TestDT {
     @Test
     public void test() {
         DecisionTree dt = new DecisionTree();
-        dt.setAlgorithm(algorithm);
         String[] attributeNames = {"cor", "perimetro"};
 
         dt.setAttributes(attributeNames);

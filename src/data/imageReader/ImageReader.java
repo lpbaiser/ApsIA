@@ -28,9 +28,10 @@ public class ImageReader {
 
     public ImageReader() {
         this.extratores = new ArrayList<>();
-        extratores.add(new ShapeDescriptor());
+//        extratores.add(new ShapeDescriptor());
         extratores.add(new PredominantColor());
-        extratores.add(new HistogramColorGray());
+//        extratores.add(new HistogramColorGray());
+        extratores.add(new Fourier());
     }
 
     public Conjunto parseFolder(String folder) {
