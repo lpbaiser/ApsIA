@@ -58,7 +58,6 @@
 
 \section{Introdução}\label{sec:introducao}
 
-
 	O aprendizado humano se dá através de três formas.
 	Para a computação, não há outra forma de adquirir conhecimento, no sentido de conhecer determinadas informações, senão a aprendizagem.
 
@@ -78,17 +77,8 @@
 
 	Aos olhos humanos distinguir os personagens da famílias ``Simpsons" é muito fácil, todavia, obter características que descrevam Sendo os personagens muito semelhantes, em termos de cor, encontrou-se grande dificuldade em.
 
-	Muito se discute, sobre o tema ``Inteligência artificial" e a utilização desta área para solucionar os inúmeros problemas existentes no mundo atual, embora a humanidade ainda engatinhe no desenvolvimento de soluções, alguns sistemas inteligentes já praticam o que chamamos de inteligência artificial, como é o casos de reconhecedores de padrões utilizando-se de imagens.
-
-\section{O Problema}\label{sec:problema}
-
-	Dado uma imagem de um banco de imagens dos Simpsons deseja-se saber qual é o personagem presente em cada imagem do conjunto de imagens, para tanto deve-se utilizar de extratores de características específicos para imagens, assim gerando conjuntos de características que a posteriori serão classificados utilizando classificadores do tipo K-NN (k-nearest neighbors), SVM (support vector machine) e DT (decision tree).
-
-
 
 \section{Organização da Solução}\label{sec:solucao}
-
-	Para implementação da solução do problema a priori observou-se os conjuntos de treino e teste do problema proposto afim de encontrar características que maior definem e distinguem uma imagem de outra. Tomando-se um problema onde o conjunto de imagens expressam cores que melhor definem os personagens, nós optamos por extratores de características quem trabalham melhor com coloração de imagem, então dada a escolha dos extratores, definimos o primeiro o extrator de cores predominantes, cada imagem é iterada sobre sua matriz de cores e dela quantificamos as cores que aparecem e são condizentes com as cores presentes na vestimenta de cada personagem, ao final da iteração temos um \textit{hashmap} onde cada chave é a cor da roupa de um personagem e seu valor a quantidade de pixels presente na matriz.
 
 
 \subsection{Diagramação}\label{sec:diagramacao}
