@@ -7,13 +7,14 @@ package classificator.majorityVote;
 
 import classificator.Classifier;
 import classificator.Confusao;
+import classificator.decisionTree.DecisionTree;
 import classificator.knn.KNN;
 import classificator.svm.SVM;
 import data.Classe;
 import data.Conjunto;
 import data.Instancia;
-import dt.DecisionTree;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -36,7 +37,7 @@ public class MajorityVoteClassifier implements Classifier {
             this.knn = new KNN(3, treino, 100, true);
             this.svmKernel0 = new SVM(treino, 0);
             this.svmKernel3 = new SVM(treino, 3);
-            this.decisionTree = new DecisionTree();
+            this.decisionTree = new DecisionTree(treino);
         } catch (Exception ex) {
             throw new RuntimeException("Impossível inicializar classificador");
         }
@@ -48,6 +49,7 @@ public class MajorityVoteClassifier implements Classifier {
         this.knn.setConjuntoTeste(teste);
         this.svmKernel0.setConjuntoTeste(teste);
         this.svmKernel3.setConjuntoTeste(teste);
+        this.decisionTree.setConjuntoTeste(teste);
     }
 
     @Override
@@ -73,7 +75,22 @@ public class MajorityVoteClassifier implements Classifier {
         votes = 0;
 
         classifierClassifyAs = knn.classify(instancia);
-
+        votes = classeHasVotos.get(classifierClassifyAs);
+        if (votes == null) {
+            votes = 0;
+        }
+        votes++;
+        classeHasVotos.put(classifierClassifyAs, votes);
+        
+        classifierClassifyAs = svmKernel0.classify(instancia);
+        votes = classeHasVotos.get(classifierClassifyAs);
+        if (votes == null) {
+            votes = 0;
+        }
+        votes++;
+        classeHasVotos.put(classifierClassifyAs, votes);
+        
+        classifierClassifyAs = svmKernel3.classify(instancia);
         votes = classeHasVotos.get(classifierClassifyAs);
         if (votes == null) {
             votes = 0;
@@ -81,13 +98,26 @@ public class MajorityVoteClassifier implements Classifier {
         votes++;
         classeHasVotos.put(classifierClassifyAs, votes);
 
-        classifiedAs = getMajorityClasse(classeHasVotos);
+        classifierClassifyAs = decisionTree.classify(instancia);
+        if (classifierClassifyAs != null) {
+            votes = classeHasVotos.get(classifierClassifyAs);
+            if (votes == null) {
+                votes = 0;
+            }
+            votes++;
+            classeHasVotos.put(classifierClassifyAs, votes);
+        }
 
+        classifiedAs = getMajorityClasse(classeHasVotos);
         return classifiedAs;
     }
 
     private Classe getMajorityClasse(HashMap<Classe, Integer> classeHasVotos) {
-        Map.Entry<Classe, Integer> majority = classeHasVotos.entrySet().iterator().next();
+        Iterator<Map.Entry<Classe, Integer>> iterator = classeHasVotos.entrySet().iterator();
+        if (!iterator.hasNext()) {
+            return null;
+        }
+        Map.Entry<Classe, Integer> majority = iterator.next();
         for (Map.Entry<Classe, Integer> entry : classeHasVotos.entrySet()) {
             if (majority.getValue() < entry.getValue()) {
                 majority = entry;
