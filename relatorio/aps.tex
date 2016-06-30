@@ -58,9 +58,24 @@
 
 \section{Introdução}\label{sec:introducao}
 
-	Muito se discute, hoje em dia a utilização da inteligência artificial no mundo atual, o avanço 
+	O aprendizado humano se dá através de três formas.
+	Para a computação, não há outra forma de adquirir conhecimento, no sentido de conhecer determinadas informações, senão a aprendizagem.
+
+	Podemos ``ensinar" um computador através de três maneiras, à moda dos seres humanos. São elas: O aprendizado supervisionado, o aprendizado não-supervisionado e o aprendizado por reforço. Em qualquer uma dessas três modalidades não há o aprendizado por..
+	A saber, o aprendizado não supevisionado é aquele em que o computador precisa extrair informações que julgue relevantes sem qualquer apoio ou regra informada; Obviamente este é o modelo de aprendizagem que mais se busca. O aprendizado por reforço também exige do computador extrair conhecimento de um amontoado de informações, encontrando conexões a respeito dos dados analisados, contando ainda com uma bonificação a cada resposta certa e uma reclamação a cada resposta incorreta; À moda dos que recebem gorjeta. Há ainda, o aprendizado não-supervisionado, que fornece ao computador um conjunto de treinamento para que este aprenda a classificar itens já sabendo da real resposta de cada um destes e só em seguida seja lançado ao mundo para predizer itens não conhecidos.
+
+	Para este trabalho, tratamos desta última categoria de classificadores. Neste, foi dado um problema que demandava escolher características de cada instância e classificá-las. A seção que segue, encarrega-se de elucidar o problema.
+
 
 \section{O Problema}\label{sec:problema}
+
+	Foi dado dois conjuntos, um para treino e outro para teste. Cada conjunto continha dezenas de imagens, cada uma com um (em algum casos mais que um) personagem do desenho animado ``Os Simpson"; São eles: Bart, Lisa, Homer, MARGE, e MAGGIE. Deste modo, cada imagem pertencente a um dos conjuntos configurou-se como uma instância de classificação.
+
+	Cabia ao escopo deste trabalho escolher características para serem extraídas destas instâncias, bem como escolher os classificadores de aprendizagem não-supervisionada para operarem sobre os conjuntos.
+
+	Como exaustivamente discutido por ***, mais importa a boa escolha de características que o algoritmo de classificação empregado, pois uma vez que as características não delimitam bem as classes, não há comparação que permita distinguí-las. Sob esse aspecto, consistia nisto a maior dificuldade do trabalho: extrair características das imagens dos personagens que fossem relevantes para distinguí-los.
+
+	Aos olhos humanos distinguir os personagens da famílias ``Simpsons" é muito fácil, todavia, obter características que descrevam Sendo os personagens muito semelhantes, em termos de cor, encontrou-se grande dificuldade em.
 
 
 \section{Organização da Solução}\label{sec:solucao}
@@ -74,21 +89,16 @@
 
 \section{Implementação}
 
-Dado as bibliotecas já implementadas, como mencionado na seção anterior, desenvolveu-se a solução com a linguagem de programação C.
 
-Além das abstrações já citadas, para facilitar o desenvolvimento e torná-lo mais natural, tornando-o mais próximo ao conceito de objetos, utilizou-se apelidos característicos de objetos para estruturas já nomeadas (como por exemplo \emph{Connection} ao invés de \emph{connection\_t}) e definições de métodos redundantes (como por exemplo \emph{sendPackage()} em contraposição à \emph{CONN\_send()}). Tais fatores, permitiram o encapsulamento de algumas funcionalidades e possibilidade de fácil e rápida manutenção/refatoração do código.
-
-Tendo sido mapeado os \emph{includes} no diagrama de classes, facilmente pode-se visualizar os módulos que os programas \emph{server} e \emph{client} deveriam incluir, mantendo a coerência com a distância que as partes (naturalmente) deveriam ter, com excessão da interface que os conecta, os pacotes definidos na biblioteca \emph{package.h} (que já conta com a inclusão da biblioteca \emph{connection.h}).
-
-Colaborou-se o código com o auxílio do controle de versões git, onde o integrante Rômulo responsabilizou-se pela implementação do arquivo \emph{server.c} e das duas \emph{threads} \emph{requestHandler.c} e \emph{worker.c}. O núcleo da aplicação foi desenvolvido de maneira conjunta e interativa em relação as partes. O integrante Marco responsabilizou-se por todo o arquivo \emph{client.c} além do \textit{upload} do arquivo em \textit{multi-parts}.
 
 \section{Considerações Finais}
 
-Considera-se, por fim, que o desenvolvimento de um projeto que conta com várias \textit{threads}, o conceito de produtor-consumidor, um \textit{buffer} compartilhado onde apresentam-se condições de corrida bem específicas, a integração de vários módulos além da comunicação inter-processos via \textit{socket}, permite no mínimo alargar os conhecimentos e fixar o aprendizado de todos esses conceitos vastamente utilizados nas mais diversas aplicações atuais. Nesse espectro, salienta-se a importância de tal desenvolvimento e, sobretudo, a fase de projeto, que tanto agrega para a visualização panorâmica deste ponto em específico da disciplina de Sistemas Operacionais.
-
-Conclui-se que aplicações de determinada escala demandam a produção de vários artefatos, que somente são produzidos após o fiel debruçar-se nas ideias e adiantar-se a respeito de todos os problemas que são solucionados e gerados a partir delas. Toma-se como proveito o pensar em soluções que possam ser integradas a demais programas e o pensar em abstrações e interfaces que possam ser escaladas e reutilizadas.
 
 Exemplo de referência CC01a ~\cite{CC01}.
+
+https://github.com/cjlin1/libsvm
+https://github.com/saebyn/java-decision-tree
+https://xanadu1010.wordpress.com/scripts-e-programas/transformada-rapida-de-fourier-com-java/
 
 \bibliography{references}{}
 \bibliographystyle{plain}
