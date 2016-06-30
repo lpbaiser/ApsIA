@@ -1,4 +1,8 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.6.26)  30 JUN 2016 17:03
+<<<<<<< HEAD
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.6.26)  30 JUN 2016 19:14
+=======
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  30 JUN 2016 18:26
+>>>>>>> e63269cacde26c4a8fba98084989ce67b9c8ffde
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,7 +659,11 @@ tly
 )
 \Hy@SectionHShift=\skip82
 )
-(./aps.aux)
+(./aps.aux
+
+LaTeX Warning: Label `sec:problema' multiply defined.
+
+)
 \openout1 = `aps.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
@@ -796,49 +804,89 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 )
 Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 66.
+Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 71.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 74.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 74.
+(babel)             in language  on input line 71.
 
 [1
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 83.
+(babel)             in language  on input line 78.
 Package babel Info: Redefining portuges shorthand "|
+<<<<<<< HEAD
 (babel)             in language  on input line 89.
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--95
+
+ []
+
+=======
+(babel)             in language  on input line 84.
+>>>>>>> e63269cacde26c4a8fba98084989ce67b9c8ffde
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 95.
+(babel)             in language  on input line 90.
 Package babel Info: Redefining portuges shorthand "|
+<<<<<<< HEAD
 (babel)             in language  on input line 95.
+[2]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 105.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 112.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 116.
+ (./aps.bbl
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 9.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 9.
+ [3])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 128.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 128.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
+ (./aps.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 128.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 128.
+=======
+(babel)             in language  on input line 90.
  [2]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 93.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 100.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 104.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 108.
  (./aps.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 116.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 120.
+(babel)             in language  on input line 116.
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
  (./aps.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 120.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 120.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 116.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 116.
+>>>>>>> e63269cacde26c4a8fba98084989ce67b9c8ffde
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
+<<<<<<< HEAD
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
+=======
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
+>>>>>>> e63269cacde26c4a8fba98084989ce67b9c8ffde
  )
 (\end occurred inside a group at level 1)
 
@@ -847,10 +895,18 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
 Here is how much of TeX's memory you used:
  14745 strings out of 495638
  205705 string characters out of 6187352
- 335080 words of memory out of 5000000
+<<<<<<< HEAD
+ 336119 words of memory out of 5000000
  17723 multiletter control sequences out of 15000+600000
  45576 words of font info for 57 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,8n,48p,897b,10299s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,48p,897b,10410s stack positions out of 5000i,500n,10000p,200000b,80000s
+=======
+ 335130 words of memory out of 5000000
+ 17723 multiletter control sequences out of 15000+600000
+ 45576 words of font info for 57 fonts, out of 8000000 for 9000
+ 16 hyphenation exceptions out of 8191
+ 43i,8n,48p,991b,10299s stack positions out of 5000i,500n,10000p,200000b,80000s
+>>>>>>> e63269cacde26c4a8fba98084989ce67b9c8ffde
 
-Output written on aps.pdf (3 pages).
+Output written on aps.pdf (4 pages).
