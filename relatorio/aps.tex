@@ -96,31 +96,11 @@
 
 	O terceiro classificador \textit{decision tree} toma como entrada uma situação descrita por um conjunto de atributos e retorna uma decisão, ou seja este valor retornado é o valor predito para o valor de entrada, na árvore de decisão os valores de entrada podem ser discretos ou contínuos. Nesta implementação, foram utilizados os valores de entrada contínuos em uma árvore de decisão binária e não multiclasse. O funcionamento da \textit{decision tree} é equiparado a uma árvore de busca onde em cada nó é tomada uma decisão até chegar ao nó folha. Na implementação da biblioteca utilizada continha apenas a árvore de decisão binária e entrada dos valores discretos.
 
-<<<<<<< HEAD
-\subsection{Resultados}\label{sec:diagramacao}
-	\begin{table}[]
-=======
 	A solução foi construída inteiramente na linguagem de programação Java, utilizando bibliotecas de código fonte aberto disponíveis na internet. Para a transformada de \textit{Fourier}, utilizou a biblioteca implementada por \cite{Anderson}. Para a árvore de decisão, utilizou a biblioteca implementada por \cite{Decision Tree}. Para o classificador SVM, utilizou a biblioteca implementada por \cite{CC01}.
 
 
-\section{Considerações Finais}
+\begin{table}[H]
 
-\bibliography{references}{}
-\bibliographystyle{plain}
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{table}[]
->>>>>>> 9ceeb892d6e548789b0f1228474a264bbf564fb7
 \centering
 \caption{KNN, k=3, Normalizado}
 \label{my-label}
@@ -136,7 +116,7 @@
 
 	
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{KNN, todas características}
 \label{my-label}
@@ -152,7 +132,7 @@ K  & Accuracy \\ \hline
 \end{table}
 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{KNN com distância euclidiana e k = 3 e conjuntos normalizados por minimax}
 \label{my-label}
@@ -182,7 +162,7 @@ Histograma + T. de Fourrier                                                     
 
 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Teste completo}
 \label{my-label}
@@ -200,7 +180,7 @@ Accuracy = 0.5789473684210527.
 
 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Teste completo}
 \label{my-label}
@@ -218,10 +198,6 @@ Accuracy = 0,6.
 
 
 
-\section{Implementação}
-
-
-
 \section{Considerações Finais}
 
 	Considera-se a respeito deste trabalho que identificar características das instâncias que possibilitem identificá-las é mais custoso (especialmente neste trabalho que possuía poucos padrões fixos), racionalmente falando, que encontrar um algoritmo que delinie-se bem ao problema, especialmente porque encontram-se muitas implementações de variados classificadores de código aberto disponíveis na internet.
@@ -229,12 +205,6 @@ Accuracy = 0,6.
 	Considera-se que o apesar da utilização de vários classificadores, o que mais contribui para a predição são as características utilizadas, de modo que quando não têm-se uma boa extração das características, não há muito o que fazer.
 
 	Assim, considera-se a suma importância de lidar com um problema real para ver-se em face as dificuldades da Inteligência Artificial como área.
-
-Exemplo de referência CC01a ~\cite{CC01}.
-
-https://github.com/cjlin1/libsvm
-https://github.com/saebyn/java-decision-tree
-https://xanadu1010.wordpress.com/scripts-e-programas/transformada-rapida-de-fourier-com-java/
 
 \bibliography{references}{}
 \bibliographystyle{plain}
